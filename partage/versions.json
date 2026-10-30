@@ -1,0 +1,79 @@
+[
+  {
+    "numero": 1,
+    "date": "2026-10-08",
+    "titre": "Première intégration complète",
+    "description": "Les 9 pages de la maquette, les pages légales et la page 404. Comparées aux captures à 1440 px, adaptées au mobile, vérifiées (HTML, liens, accessibilité, Lighthouse).",
+    "commit": "52ba9a4"
+  },
+  {
+    "numero": 2,
+    "date": "2026-10-08",
+    "titre": "Vraies photos d'actualité et des réseaux",
+    "description": "Accueil et revue de presse : photo principale de chaque article Ouest-France, avec son crédit. Facebook : la publication la plus récente. Instagram : les 6 dernières publications du club.",
+    "commit": "65ddf89"
+  },
+  {
+    "numero": 3,
+    "date": "2026-10-14",
+    "titre": "Fil Facebook en direct",
+    "description": "Accueil et Vie du club : le fil Facebook officiel (plugin de Meta) s'affiche en direct après un clic du visiteur sur « Afficher le fil Facebook », conformément aux règles de la CNIL sur les cookies.",
+    "commit": "c5a46b0"
+  },
+  {
+    "numero": 4,
+    "date": "2026-10-22",
+    "titre": "Check-list, espace membres et pages revues",
+    "description": "Check-list du triathlète à imprimer et pense-bête sur Nous rejoindre. Espace membres protégé par mot de passe (fiches PPG, natation, parcours vélo). Documents, règlement et parcours du triathlon reliés, biathlon en décembre 2026. Vie du club : frise de l'agenda, Facebook et Instagram côte à côte avec un seul accord. Entraînements : semaine type plus visuelle. Nouvelle photo de groupe, logos Strava et i-Run.",
+    "commit": "79afd22"
+  },
+  {
+    "numero": 5,
+    "date": "2026-10-23",
+    "titre": "Tenues 2026, agenda sur l'accueil, horaires de la piscine",
+    "description": "Tenues de la saison en frise de losanges par discipline. Agenda chronologique sur l'accueil (sans l'assemblée générale). Horaires de baignade d'Océlia dans une fenêtre sur Entraînements. Parcours du triathlon masqués jusqu'à l'ouverture des inscriptions 2027. Course à pied de septembre à juin. Nouveau logo de Montfort Communauté. Fiches PPG et mobilité dans l'espace membres.",
+    "commit": "96e9df9"
+  },
+  {
+    "numero": 6,
+    "date": "2026-10-27",
+    "titre": "Agenda vertical, tenues entières, espace membres retiré",
+    "description": "Accueil : agenda vertical le long des deux évènements, carte « Les BT en course » retirée. Agenda : galette des rois fin janvier, biathlon entre avril et juin, assemblée générale retirée. Tenues visibles en entier dans les losanges. Licence vélo à 35 €. Biathlon : date et lieu à venir. Bouton « Devenir bénévole » et mention Klikego de la check-list retirés. Espace membres supprimé.",
+    "commit": "a98304e"
+  },
+  {
+    "numero": 7,
+    "date": "2026-10-27",
+    "titre": "Corrections issues de l'audit",
+    "description": "Accueil : ville au-dessus du titre, boutons « Nous rejoindre » et « Voir les entraînements », légendes des affiches. Séance d'essai gratuite sur demande (Nous rejoindre, Contact). Formulaire avec champs obligatoires. Téléphone : raccourci « Rejoindre » et bandeau Facebook/Instagram compact. Vignettes Facebook incomplètes masquées. Partenaires : « Devenir partenaire du BT ».",
+    "commit": "d031137"
+  },
+  {
+    "numero": 8,
+    "date": "2026-10-29",
+    "titre": "Publications Facebook intégrées",
+    "description": "Facebook : les publications choisies s'affichent en entier (photo, texte, réactions) avec le code d'intégration officiel, à la place du fil de la page qui n'affichait plus rien aux visiteurs non connectés. Instagram vérifié.",
+    "commit": "3375d2a"
+  },
+  {
+    "numero": 9,
+    "date": "2026-10-29",
+    "titre": "Vidéo du triathlon, 3 publications, pages légales",
+    "description": "Vidéo du Triathlon de Brocéliande 2026 en vitrine (accueil et Nos évènements). 3 publications Facebook et Instagram en défilement, correctif du conflit entre les deux. T-shirt et casquette dans l'équipement. Mentions légales et page Confidentialité rédigées, informations du club à compléter.",
+    "commit": "3cd1788"
+  },
+  {
+    "numero": 10,
+    "date": "2026-10-29",
+    "titre": "Vidéo sur fond clair, 3 publications Facebook, pages légales",
+    "description": "Vitrine vidéo de l'accueil sur fond clair avec liseré. 3 dernières publications Facebook et Instagram, récupération automatique prête (clés de Meta à créer). Mentions légales complétées (RNA, siège, directeur de la publication, hébergeur).",
+    "commit": "82d54f0"
+  },
+  {
+    "numero": 11,
+    "date": "2026-10-29",
+    "titre": "Site prêt pour GitHub",
+    "description": "Plus aucun texte provisoire ni bouton sans lien. Hébergeur complet dans les mentions légales. Guides réunis et démarche de mise en ligne réécrite ; dossier prêt à déposer sur GitHub.",
+    "commit": "0c198c4"
+  }
+]

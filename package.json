@@ -1,0 +1,35 @@
+{
+  "name": "site-broceliande-triathlon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site officiel du club Brocéliande Triathlon (Montfort-sur-Meu)",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve --port=8080",
+    "build": "eleventy",
+    "check": "npm run build && html-validate dist && node scripts/verifier-liens.mjs && node scripts/verifier-accessibilite.mjs",
+    "clean": "node scripts/nettoyer.mjs",
+    "video": "node scripts/convertir-video.mjs",
+    "crochets": "node scripts/lister-crochets.mjs",
+    "audit": "node scripts/audit-lighthouse.mjs",
+    "html": "npm run build && node scripts/fichier-html.mjs",
+    "checklist": "node scripts/generer-checklist.mjs",
+    "tenues": "node scripts/preparer-tenues.mjs",
+    "guide": "node scripts/generer-guide-pdf.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-img": "^7.0.0",
+    "@fontsource/anton": "^5.3.0",
+    "@fontsource/barlow": "^5.3.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "html-validate": "^11.16.2",
+    "puppeteer-core": "^25.12.0"
+  }
+}
