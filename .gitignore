@@ -1,0 +1,18 @@
+# Dépendances et fichiers générés
+node_modules/
+dist/
+.cache/
+
+# Dossiers de travail locaux, jamais envoyés sur GitHub :
+#   _ATELIER/   maquette d'origine, éléments fournis par le club, consignes de départ
+#   LIVRABLES/  guides en PDF, copie du site prête pour GitHub, versions de relecture
+_ATELIER/
+LIVRABLES/
+
+# Réglages locaux des outils
+.claude/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
+
