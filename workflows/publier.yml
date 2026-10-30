@@ -1,0 +1,87 @@
+# Publie automatiquement le site sur GitHub Pages à chaque envoi (push) sur la branche main,
+# y compris chaque modification enregistrée directement sur github.com (« Commit changes »).
+# Si le site contient une erreur (fichier JSON mal écrit, lien interne cassé…), la publication
+# s'arrête et l'ancienne version reste en ligne. Voir l'onglet « Actions » du dépôt.
+
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Chaque nuit (vers 5 h, heure de Paris) : le site est régénéré avec les dernières publications
+  # Facebook et Instagram, si les clés de Meta sont enregistrées dans les secrets du dépôt.
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construire:
+    name: Générer et vérifier le site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le projet
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Installer les outils du site
+        run: npm ci
+
+      - name: Lire l'adresse de publication GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      # Un nouveau visuel de tenue (photo sur fond blanc) est recadré pour tenir entier dans son losange.
+      # Les visuels déjà recadrés ne sont pas modifiés.
+      - name: Recadrer les visuels des tenues
+        run: node scripts/preparer-tenues.mjs
+
+      - name: Vérifier le site (HTML valide, liens internes)
+        run: |
+          npx @11ty/eleventy
+          npx html-validate dist
+          node scripts/verifier-liens.mjs
+
+      # Simple liste dans le journal : elle ne bloque pas la publication.
+      - name: Repérer les textes provisoires entre crochets
+        run: node scripts/lister-crochets.mjs
+
+      - name: Générer le site pour son adresse de publication
+        run: npx @11ty/eleventy
+        env:
+          PREFIXE_CHEMIN: ${{ steps.pages.outputs.base_path }}/
+          URL_SITE: ${{ steps.pages.outputs.base_url }}
+          # Dernières publications Facebook et Instagram (facultatif, voir guides/GUIDE_GESTION.md, section 3.7)
+          META_JETON_PAGE: ${{ secrets.META_JETON_PAGE }}
+          META_ID_PAGE: ${{ secrets.META_ID_PAGE }}
+          META_ID_INSTAGRAM: ${{ secrets.META_ID_INSTAGRAM }}
+
+      - name: Préparer l'envoi
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publier:
+    name: Mettre en ligne sur GitHub Pages
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - name: Mettre en ligne
+        id: deploiement
+        uses: actions/deploy-pages@v4
