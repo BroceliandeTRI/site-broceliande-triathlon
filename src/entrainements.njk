@@ -1,0 +1,54 @@
+---
+title: Entraînements
+description: "La semaine type et ses séances encadrées : natation à la piscine Océlia, vélo le dimanche, course à pied au stade de Montfort-sur-Meu, eau libre au lac de Trémelin et PPG."
+permalink: /entrainements/
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(surtitre="Entraînements", titre="Ta semaine au BT") %}
+  <p class="bandeau__chapeau mesure-64">La semaine type et ses séances encadrées sont la base des entraînements du club. Elles sont encadrées bénévolement par des membres, présents sans contrainte et autant qu'ils le peuvent.</p>
+  <p class="texte-blanc texte-600 mesure-64">En plus, les membres proposent régulièrement des séances supplémentaires, selon les disponibilités de chacun.</p>
+{% endcall %}
+
+{# Disciplines #}
+<section class="section">
+  <div class="conteneur pt-64 pb-40 grille min-260 g-16">
+    {%- for discipline in disciplines %}
+    {{ m.carteDiscipline(discipline) }}
+    {%- endfor %}
+  </div>
+</section>
+
+{% include "composants/semaine-type.njk" %}
+
+{# Lieux #}
+<section class="section fond-blanc">
+  <div class="conteneur pt-64 pb-72 pile g-24">
+    <h2 class="titre t-44">Où nous retrouver</h2>
+    <ul class="grille min-260 g-16">
+      {%- for lieu in lieux.entrainements %}
+      <li class="lieu lieu--{{ lieu.couleur }}"><b>{{ lieu.nom }}</b><span>{{ lieu.detail }}</span></li>
+      {%- endfor %}
+    </ul>
+
+    {#- Horaires de baignade publique d'Océlia : image masquée, ouverte dans une fenêtre à la demande #}
+    <div class="horaires-piscine">
+      <span class="horaires-piscine__icone">{{ m.icone("calendrier", 24) }}</span>
+      <p><b>Envie de nager en dehors des séances du club ?</b> La piscine Océlia propose des créneaux de baignade publique.</p>
+      <div class="boutons boutons--10">
+        <button class="btn btn-noir" type="button" data-ouvrir-dialogue="horaires-piscine" hidden>Voir les horaires de baignade</button>
+        <a class="btn btn-contour-noir" href="https://www.piscine-ocelia.com/">Site de la piscine</a>
+      </div>
+    </div>
+    <dialog class="dialogue" id="horaires-piscine" aria-labelledby="horaires-piscine-titre">
+      <div class="dialogue__contenu">
+        <div class="dialogue__tete">
+          <h2 class="dialogue__titre" id="horaires-piscine-titre">Horaires de baignade publique · Piscine Océlia</h2>
+          <button class="dialogue__fermer" type="button" data-fermer-dialogue aria-label="Fermer les horaires">{{ m.icone("fermer", 22) }}</button>
+        </div>
+        <img src="/assets/img/horaires_piscine_ocelia.png" alt="Planning de baignade publique de la piscine Océlia : horaires des bassins principaux (bassin de 25 m, bassin ludique, pataugeoire et toboggan) et du bassin activités, jour par jour, en périodes scolaires et pendant les vacances." eleventy:widths="900,1800" sizes="(min-width: 1000px) 920px, 92vw">
+        <p class="dialogue__note">Ces horaires peuvent changer en cours de saison : vérifie-les sur le <a href="https://www.piscine-ocelia.com/">site de la piscine Océlia</a>.</p>
+      </div>
+    </dialog>
+  </div>
+</section>

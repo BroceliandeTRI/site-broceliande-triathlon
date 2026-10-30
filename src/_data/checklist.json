@@ -1,0 +1,64 @@
+{
+  "titre": "Check-list du triathlète",
+  "fichier": "check-list-triathlete.pdf",
+  "sections": [
+    {
+      "id": "avant",
+      "titre": "Avant course",
+      "couleur": "rose",
+      "icone": "calendrier",
+      "elements": [
+        "Licence Triathlon / Pass compétition",
+        "Relire le règlement",
+        "Regarder les plans (retrait de dossards, parc à vélo, départ, arrivée)",
+        "Regarder les parcours",
+        "Préparer vos barres, gels, boissons"
+      ]
+    },
+    {
+      "id": "jour-j",
+      "titre": "Jour J",
+      "couleur": "orange",
+      "icone": "sac",
+      "elements": ["Tri fonction", "Montre", "Serviette"]
+    },
+    {
+      "id": "natation",
+      "titre": "Jour J – Natation",
+      "couleur": "noir",
+      "picto": "picto_swim.png",
+      "elements": [
+        "Puce de chronométrage",
+        "Combinaison",
+        "Tri fonction",
+        "Lunettes de natation",
+        "Bonnet de natation",
+        "Crème anti-frottement"
+      ]
+    },
+    {
+      "id": "velo",
+      "titre": "Jour J – Vélo",
+      "couleur": "orange",
+      "picto": "picto_bike.png",
+      "elements": [
+        "Casque",
+        "Chaussures de vélo",
+        "Chaussettes",
+        "Lunettes de soleil",
+        "Compteur",
+        "Ceinture porte-dossard",
+        "Kit de réparation",
+        "Bidons, barres, gel…"
+      ]
+    },
+    {
+      "id": "course",
+      "titre": "Jour J – Course à pied",
+      "couleur": "rose",
+      "picto": "picto_run.png",
+      "elements": ["Chaussures de CAP", "Casquette / visière", "Nutrition, poche d'eau"]
+    }
+  ],
+  "note": ""
+}

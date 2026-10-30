@@ -1,0 +1,13 @@
+{
+  "chiffresAccueil": [
+    { "valeur": "2008", "libelle": "Création du club" },
+    { "valeur": "93", "libelle": "Licenciés, saison 2025" }
+  ],
+  "chiffresTriathlon": [
+    { "valeur": "60 000+", "libelle": "Licenciés en France", "couleur": "orange" },
+    { "valeur": "3 000+", "libelle": "Épreuves par an en France", "couleur": "orange" },
+    { "valeur": "3 800+", "libelle": "Licenciés en Bretagne, 57 clubs (2025)", "couleur": "rose" },
+    { "valeur": "93", "libelle": "Licenciés au BT (2025)", "couleur": "rose" }
+  ],
+  "sourcesChiffres": "Sources : FFTRI, Ligue de Bretagne de Triathlon."
+}

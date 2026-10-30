@@ -1,0 +1,332 @@
+{#
+  Composants réutilisables du site.
+  Dans une page : {% import "macros.njk" as m with context %} puis {{ m.bouton("Texte", "/lien/") }}
+#}
+
+{# ---------- Icônes (dessins vectoriels, décoratifs : aria-hidden) ---------- #}
+{% macro icone(nom, taille=20) -%}
+{%- if nom == "instagram" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+{%- elif nom == "facebook" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg>
+{%- elif nom == "youtube" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>
+{%- elif nom == "strava" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+{%- elif nom == "calendrier" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14l2.5 2.5L16 12"/></svg>
+{%- elif nom == "sac" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+{%- elif nom == "document" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>
+{%- elif nom == "ppg" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg>
+{%- elif nom == "menu" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+{%- elif nom == "fermer" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>
+{%- elif nom == "pause" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+{%- elif nom == "lecture" -%}
+<svg width="{{ taille }}" height="{{ taille }}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"/></svg>
+{%- endif -%}
+{%- endmacro %}
+
+
+{# ---------- Bouton pilule ----------
+   variante : "orange", "noir", "contour" ou "contour-noir". Sans lien (url vide), le texte s'affiche comme une information, avec une icône de calendrier. #}
+{% macro bouton(texte, url, variante="orange", classes="") -%}
+{%- if url -%}
+<a class="btn btn-{{ variante }}{% if classes %} {{ classes }}{% endif %}" href="{{ url }}">{{ texte }}</a>
+{%- else -%}
+<span class="btn-info{% if classes %} {{ classes }}{% endif %}">{{ icone("calendrier", 20) }}{{ texte }}</span>
+{%- endif -%}
+{%- endmacro %}
+
+
+{# ---------- Compte à rebours « J-xxx » (valeur calculée à la génération, mise à jour en JavaScript) ---------- #}
+{% macro compteARebours(cible, classes="") -%}
+<span class="compte{% if classes %} {{ classes }}{% endif %}"><span aria-hidden="true">J-</span><span class="sr-only">Jours restants avant le départ : </span><span data-compte-a-rebours="{{ cible }}">{{ cible | joursAvant }}</span></span>
+{%- endmacro %}
+
+
+{# ---------- Bandeau noir des pages intérieures ----------
+   Le contenu placé entre {% call %} et {% endcall %} s'affiche sous le titre
+   (ou dans la colonne de droite si deuxColonnes est vrai). #}
+{% macro bandeau(surtitre="", titre="", deuxColonnes=false, retour=false, classeTitre="t-72") -%}
+<section class="bandeau{% if deuxColonnes %} bandeau--colonnes{% endif %}">
+  <img class="bandeau__motif" src="/assets/img/tranquilou_white.png" alt="" loading="eager">
+  <div class="conteneur bandeau__contenu">
+    {%- if deuxColonnes %}<div class="bandeau__titres">{% endif %}
+    {%- if retour %}
+    <a class="bandeau__retour" href="{{ retour.url }}"><span aria-hidden="true">←</span> {{ retour.texte }}</a>
+    {%- endif %}
+    {%- if surtitre %}
+    <p class="surtitre surtitre--sombre">{{ surtitre }}</p>
+    {%- endif %}
+    <h1 class="titre {{ classeTitre }}">{{ titre }}</h1>
+    {%- if deuxColonnes %}</div>
+    <div class="bandeau__texte">{% endif %}
+    {{ caller() }}
+    {%- if deuxColonnes %}</div>{% endif %}
+  </div>
+</section>
+{%- endmacro %}
+
+
+{# ---------- Carte d'actualité (photo 4:3, étiquette, date, titre) ---------- #}
+{% macro carteActu(actu) -%}
+<a class="carte-actu" href="{{ actu.url }}">
+  <span class="carte-actu__visuel">
+    <img class="carte-actu__image" src="/assets/img/{{ actu.image }}" alt="{{ actu.alt }}"{% if actu.cadrage %} style="object-position: {{ actu.cadrage }}"{% endif %} eleventy:widths="480,800" sizes="(min-width: 1304px) 397px, (min-width: 760px) 45vw, 100vw">
+    <span class="etiquette etiquette--{{ actu.couleurCategorie }}">{{ actu.categorie }}</span>
+    {%- if actu.credit %}
+    <span class="credit-photo">{{ actu.credit }}</span>
+    {%- endif %}
+  </span>
+  <span class="carte-actu__infos">{{ actu.infos }}</span>
+  <h3 class="carte-actu__titre">{{ actu.titre }}</h3>
+</a>
+{%- endmacro %}
+
+
+{# ---------- Carte d'article de presse ---------- #}
+{% macro cartePresse(article, aLaUne=false) -%}
+<a class="carte-presse carte-presse--{{ article.couleur }}{% if aLaUne %} carte-presse--une{% endif %}" href="{{ article.url }}">
+  {%- if article.image %}
+  <span class="carte-presse__visuel">
+    <img class="carte-presse__image" src="/assets/img/{{ article.image }}" alt="{{ article.alt }}" eleventy:widths="480,800" sizes="(min-width: 1304px) 381px, (min-width: 760px) 45vw, 100vw">
+    {%- if article.credit %}
+    <span class="credit-photo">{{ article.credit }}</span>
+    {%- endif %}
+  </span>
+  {%- endif %}
+  <div class="carte-presse__corps">
+    <span class="carte-presse__infos"><span>{{ article.source }}</span><span>{{ article.date }}</span></span>
+    <h3 class="carte-presse__titre">{{ article.titre }}</h3>
+    <span class="carte-presse__lire">Lire l'article <span aria-hidden="true">↗</span></span>
+  </div>
+</a>
+{%- endmacro %}
+
+
+{# ---------- Publication Facebook (photo carrée et légende) ---------- #}
+{% macro publication(pub) -%}
+<a class="publication" href="{{ pub.url }}">
+  <img class="publication__image{% if pub.entiere %} publication__image--entiere{% endif %}" src="/assets/img/{{ pub.image }}" alt="{{ pub.alt }}"{% if pub.cadrage %} style="object-position: {{ pub.cadrage }}"{% endif %} eleventy:widths="240,480" sizes="(min-width: 760px) 240px, 50vw">
+  <span class="publication__texte"><span class="publication__date">{{ pub.date }}</span>{{ pub.legende }}</span>
+</a>
+{%- endmacro %}
+
+
+{# ---------- Bloc Facebook ----------
+   Vignettes de src/_data/publications.json, puis publications Facebook intégrées
+   (facebookIntegrations), chargées seulement après l'accord du visiteur (cookies Meta, CNIL). #}
+{% macro blocFacebook(titre, classeTitre="t-52", nombre=6, espacement="py-80", avecIcone=true) -%}
+{%- set pageFacebook = (reseaux | filtrer("id", "facebook"))[0] %}
+<div class="conteneur {{ espacement }} bloc-facebook">
+  <div class="bloc-facebook__intro">
+    {%- if avecIcone %}
+    <span class="bloc-facebook__icone">{{ icone("facebook", 26) }}</span>
+    {%- endif %}
+    <p class="surtitre">Dernières publications</p>
+    <h2 class="titre {{ classeTitre }}">{{ titre }}</h2>
+    <p class="texte-gris">Les photos des courses, des entraînements et des évènements, publiées au fil de la saison sur la page du club.</p>
+    {{ bouton("Suivre la page", pageFacebook.url, "noir", "aligne-debut") }}
+  </div>
+  {{ contenuFacebook(nombre, 3, "integration--facebook") }}
+</div>
+{%- endmacro %}
+
+
+{# ---------- Publications Facebook (code d'intégration officiel) : vignettes tant que le visiteur n'a pas accepté ----------
+   nombre : vignettes affichées avant l'accord ; nombreIntegrations : publications intégrées après l'accord. #}
+{% macro contenuFacebook(nombre=4, nombreIntegrations=3, classes="") -%}
+{#- Publications récupérées automatiquement (publicationsAuto.js) si disponibles, sinon la liste de publications.json #}
+{%- set listeFacebook = publicationsAuto.facebook if (publicationsAuto and publicationsAuto.facebook.length) else publications.facebookIntegrations %}
+{%- set integrations = (listeFacebook or []) | premiers(nombreIntegrations) %}
+{%- set avecIntegration = site.filFacebook and integrations.length %}
+<div class="integration{% if classes %} {{ classes }}{% endif %}"{% if avecIntegration %} data-integration="facebook" data-publications="{{ integrations | dump }}"{% endif %}>
+  {%- if avecIntegration %}
+  {{ accordIntegration() }}
+  {%- endif %}
+  <div class="grille-publications grille-publications--facebook" data-integration-vignettes>
+    {%- for pub in publications.facebook | completes | premiers(nombre) %}
+    {{ publication(pub) }}
+    {%- endfor %}
+  </div>
+  {%- if avecIntegration %}
+  {{ retraitIntegration("integration__cadre") }}
+  {%- endif %}
+</div>
+{%- endmacro %}
+
+
+{# ---------- Publications Instagram (code d'intégration officiel) : vignettes tant que le visiteur n'a pas accepté ---------- #}
+{% macro contenuInstagram(nombre=3, nombreVignettes=6) -%}
+{%- set listeInstagram = publicationsAuto.instagram if (publicationsAuto and publicationsAuto.instagram.length) else publications.instagramIntegrations %}
+{%- set integrations = (listeInstagram or []) | premiers(nombre) %}
+{%- set avecIntegration = site.integrationInstagram and integrations.length %}
+<div class="integration"{% if avecIntegration %} data-integration="instagram" data-publications="{{ integrations | dump }}"{% endif %}>
+  {%- if avecIntegration %}
+  {{ accordIntegration() }}
+  {%- endif %}
+  <div class="grille-vignettes" data-integration-vignettes>
+    {%- for pub in publications.instagram | premiers(nombreVignettes) %}
+    {{ vignette(pub) }}
+    {%- endfor %}
+  </div>
+  {%- if avecIntegration %}
+  {{ retraitIntegration("integration__cadre") }}
+  {%- endif %}
+</div>
+{%- endmacro %}
+
+
+{# ---------- Pense-bête du triathlète (src/_data/checklist.json) ---------- #}
+{#
+  Frise de l'agenda : les rendez-vous dans l'ordre, ceux qui sont passés grisés,
+  et le repère « Aujourd'hui » (recalculé dans le navigateur, voir main.js).
+  Horizontale quand la place le permet, verticale dans un espace étroit (téléphone, colonne de l'accueil).
+#}
+{% macro friseAgenda(rdvs) %}
+{%- set progression = rdvs | progressionAgenda -%}
+<div class="frise-zone">
+<div class="frise" data-frise style="--avancement: {{ progression.pourcentage }}%">
+  <div class="frise__piste" aria-hidden="true"><span class="frise__avancement"></span><span class="frise__aujourdhui">Aujourd'hui</span></div>
+  <ol class="frise__etapes">
+    {%- for rdv in rdvs %}
+    <li class="frise__etape frise__etape--{{ rdv.couleur }}{% if loop.index0 < progression.passes %} est-passe{% endif %}" data-date="{{ rdv.date }}">
+      <span class="frise__point" aria-hidden="true"></span>
+      <span class="frise__date">{{ rdv.jour }} {{ rdv.mois }}</span>
+      <b class="frise__titre">{{ rdv.titre }}</b>
+      <span class="frise__lieu">{{ rdv.lieu }}</span>
+    </li>
+    {%- endfor %}
+  </ol>
+</div>
+</div>
+{% endmacro %}
+
+{% macro penseBete() -%}
+<section class="section fond-noir pense-bete" aria-labelledby="pense-bete-titre">
+  <div class="conteneur py-64 pile g-32">
+    <div class="section__tete section__tete--32">
+      <div class="section__titres">
+        <p class="surtitre surtitre--sombre">Avant de partir</p>
+        <h2 class="titre t-44" id="pense-bete-titre">Pense-bête du triathlète</h2>
+      </div>
+      {{ bouton("Check-list à imprimer (PDF)", "/assets/docs/" + checklist.fichier, "orange") }}
+    </div>
+    <ol class="pense-bete__etapes">
+      {%- for s in checklist.sections %}
+      <li class="pense-bete__etape pense-bete__etape--{{ s.couleur }}">
+        <span class="pense-bete__icone">
+          {%- if s.picto %}<img src="/assets/img/{{ s.picto }}" alt="" eleventy:widths="100">{% else %}{{ icone(s.icone, 28) }}{% endif -%}
+        </span>
+        <h3 class="pense-bete__titre">{{ s.titre }}</h3>
+        <ul class="pense-bete__elements">
+          {%- for e in s.elements %}
+          <li>{{ e }}</li>
+          {%- endfor %}
+        </ul>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+{%- endmacro %}
+
+
+{# ---------- Contenus de Meta (Facebook, Instagram) chargés après accord ----------
+   Encart de demande d'accord, puis zone d'affichage et lien de retrait. #}
+{% macro accordIntegration() -%}
+<div class="integration__accord" data-integration-accord>
+  <p><b>Afficher les publications Facebook et Instagram ?</b>Elles sont fournies par Meta, qui dépose des cookies et peut suivre votre navigation. Rien n'est chargé sans votre accord. <a class="lien-texte" href="/confidentialite/">En savoir plus<span class="sr-only"> sur les cookies de Meta</span></a></p>
+  <button class="btn btn-noir btn--petit" type="button" data-accord-meta="oui">Accepter et afficher</button>
+</div>
+{%- endmacro %}
+
+{% macro retraitIntegration(classesCadre) -%}
+<div class="{{ classesCadre }}" data-integration-cadre hidden></div>
+<p class="integration__retrait" data-integration-retrait hidden><button class="lien-bouton" type="button" data-accord-meta="non">Ne plus afficher les contenus Facebook et Instagram</button></p>
+{%- endmacro %}
+
+
+{# ---------- Vidéo Facebook en vitrine ----------
+   Image d'accroche et bouton de lecture : le lecteur de Facebook (cookies Meta) n'est chargé qu'au clic.
+   Sans JavaScript, l'image mène à la vidéo sur Facebook. Données : evenements.json → triathlon.video #}
+{% macro videoFacebook(video) -%}
+<figure class="video-fb" data-video-facebook="{{ video.url }}" data-titre="{{ video.titre }}">
+  <div class="video-fb__ecran">
+    <a class="video-fb__facade" href="{{ video.url }}">
+      <img class="video-fb__image" src="/assets/img/{{ video.affiche }}" alt="" eleventy:widths="640,1280" sizes="(min-width: 1000px) 760px, 100vw">
+      <span class="video-fb__lecture" aria-hidden="true">{{ icone("lecture", 34) }}</span>
+      <span class="video-fb__libelle">Regarder la vidéo<span class="video-fb__duree"> · {{ video.duree }}</span><span class="sr-only"> : {{ video.titre }}</span></span>
+    </a>
+  </div>
+  <figcaption class="video-fb__note">Vidéo : {{ video.auteur }}, publiée sur Facebook. La lancer charge le lecteur de Meta, qui dépose des cookies. <a href="/confidentialite/">En savoir plus<span class="sr-only"> sur les cookies de Meta</span></a></figcaption>
+</figure>
+{%- endmacro %}
+
+
+{# ---------- Vignette Instagram (photo carrée seule) ---------- #}
+{% macro vignette(pub) -%}
+<a class="vignette" href="{{ pub.url }}">
+  <img class="vignette__image{% if pub.entiere %} vignette__image--entiere{% endif %}" src="/assets/img/{{ pub.image }}" alt="{{ pub.alt }}"{% if pub.cadrage %} style="object-position: {{ pub.cadrage }}"{% endif %} eleventy:widths="240,480" sizes="(min-width: 760px) 200px, 50vw">
+</a>
+{%- endmacro %}
+
+
+{# ---------- Carte partenaire (logo, nom, activité, description, lien) ---------- #}
+{% macro cartePartenaire(p) -%}
+<article class="partenaire">
+  <div class="partenaire__logo">
+    {%- if p.logo %}
+    <img src="/assets/img/{{ p.logo }}" alt="{{ p.nom }}" eleventy:widths="440">
+    {%- else %}
+    <span class="partenaire__sans-logo">{{ p.nom }}</span>
+    {%- endif %}
+  </div>
+  <div class="partenaire__corps">
+    <h3 class="titre partenaire__nom">{{ p.nom }}</h3>
+    <p class="partenaire__activite">{{ p.activite }} · {{ p.commune }}</p>
+    <p class="partenaire__description">{{ p.description }}</p>
+    {%- if p.url %}
+    <a class="partenaire__lien" href="{{ p.url }}">{{ p.texteLien }}</a>
+    {%- endif %}
+  </div>
+</article>
+{%- endmacro %}
+
+
+{# ---------- Carte de résultats (année, édition, lien Klikego) ---------- #}
+{% macro carteResultat(r) -%}
+<a class="resultat" href="{{ r.url }}">
+  <span class="resultat__annee">{{ r.annee }}</span>
+  <span class="resultat__edition">{{ r.edition }}</span>
+  <span class="resultat__lien">Résultats sur Klikego <span aria-hidden="true">↗</span></span>
+</a>
+{%- endmacro %}
+
+
+{# ---------- Carte discipline (picto, horaires en tableau, texte) ---------- #}
+{% macro carteDiscipline(d) -%}
+<article class="discipline discipline--{{ d.couleur }}">
+  {%- if d.picto %}
+  <img class="discipline__picto" src="/assets/img/{{ d.picto }}" alt="" eleventy:widths="100">
+  {%- else %}
+  <span class="discipline__picto discipline__picto--icone">{{ icone("ppg", 40) }}</span>
+  {%- endif %}
+  <h2 class="titre discipline__nom">{{ d.nom }}</h2>
+  <table class="discipline__horaires">
+    <caption class="sr-only">Horaires : {{ d.nom }}</caption>
+    <tbody>
+      {%- for h in d.horaires %}
+      <tr><th scope="row">{{ h.libelle }}</th><td>{{ h.valeur }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+  <p class="discipline__texte">{{ d.texte }}</p>
+</article>
+{%- endmacro %}

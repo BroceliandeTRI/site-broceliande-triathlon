@@ -1,0 +1,53 @@
+---
+title: Confidentialité et cookies
+description: "Politique de confidentialité du site du Brocéliande Triathlon : données du formulaire de contact, hébergement, cookies, contenus Facebook et Instagram, et vos droits."
+permalink: /confidentialite/
+---
+{%- import "macros.njk" as m with context -%}
+{#- Les informations propres au club (association, contact, durée de conservation) sont dans src/_data/legal.json -#}
+{%- set asso = legal.association -%}
+
+{% call m.bandeau(surtitre="Informations légales", titre="Confidentialité et cookies") %}
+  <p class="bandeau__chapeau">Ce site collecte le moins de données possible : pas de compte, pas de statistiques, pas de cookie publicitaire. Voici le détail. Dernière mise à jour : {{ legal.miseAJour }}.</p>
+{% endcall %}
+
+<section class="section">
+  <div class="conteneur py-64">
+    <div class="texte-legal">
+      <h2 class="titre t-36">Responsable du traitement</h2>
+      <dl>
+        <div><dt>Association</dt><dd>{{ asso.nom }} ({{ asso.forme }})</dd></div>
+        <div><dt>Siège social</dt><dd>{{ asso.siege }}</dd></div>
+        <div><dt>Contact pour vos données</dt><dd><a class="lien-texte" href="mailto:{{ legal.donnees.contact }}">{{ legal.donnees.contact }}</a></dd></div>
+      </dl>
+
+      <h2 class="titre t-36">Formulaire de contact</h2>
+      <p>Le formulaire n'envoie rien au site : il prépare un e-mail dans votre propre messagerie, adressé à {{ asso.email }}. C'est vous qui l'envoyez.</p>
+      <dl>
+        <div><dt>Données</dt><dd>Nom et prénom, adresse e-mail, sujet et message.</dd></div>
+        <div><dt>Finalité</dt><dd>Répondre à votre demande : adhésion, séance d'essai, entraînements, évènements, partenariat.</dd></div>
+        <div><dt>Base légale</dt><dd>L'intérêt légitime de l'association à répondre aux demandes qui lui sont adressées.</dd></div>
+        <div><dt>Destinataires</dt><dd>Les membres du bureau chargés de répondre. Les messages arrivent dans la boîte Gmail du club (service de Google).</dd></div>
+      </dl>
+
+      <h2 class="titre t-36">Hébergement</h2>
+      <p>Le site est hébergé par {{ legal.hebergeur.nom }}. Comme tout hébergeur, il enregistre l'adresse IP des visiteurs dans ses journaux techniques, pour la sécurité du service. Voir la <a class="lien-texte" href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement">déclaration de confidentialité de GitHub</a>.</p>
+
+      <h2 class="titre t-36">Cookies et statistiques</h2>
+      <p>Le site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience. Les polices de caractères sont hébergées avec le site : aucun appel à Google Fonts.</p>
+      <p>Votre navigateur garde seulement votre choix concernant Facebook et Instagram (voir ci-dessous), pendant 6 mois. Cette information reste sur votre appareil et n'est envoyée à personne.</p>
+
+      <h2 class="titre t-36">Facebook, Instagram et vidéo</h2>
+      <p>Les publications Facebook et Instagram du club (accueil et Vie du club) ne s'affichent qu'après votre accord, demandé par un bandeau « Refuser / Accepter ». La vidéo du triathlon ne se charge que si vous cliquez sur « Regarder la vidéo ».</p>
+      <p>Ces contenus sont alors fournis par Meta Platforms Ireland Limited, qui dépose ses propres cookies et peut suivre votre navigation, selon sa <a class="lien-texte" href="https://www.facebook.com/privacy/policy/">politique de confidentialité</a>. Votre choix est gardé 6 mois. Vous pouvez le retirer à tout moment avec le lien « Ne plus afficher les contenus Facebook et Instagram », ou avec le bouton ci-dessous. Les cookies déjà déposés par Meta se suppriment depuis les réglages de votre navigateur.</p>
+      <div class="boutons boutons--centre">
+        <button class="btn btn-noir btn--petit" type="button" data-effacer-choix-meta>Effacer mon choix Facebook et Instagram</button>
+        <p class="texte-gris" data-choix-efface role="status" hidden>Votre choix est effacé : il vous sera redemandé.</p>
+      </div>
+
+      <h2 class="titre t-36">Vos droits</h2>
+      <p>Vous pouvez demander l'accès à vos données, leur rectification ou leur effacement, limiter leur utilisation ou vous y opposer. Écrivez à <a class="lien-texte" href="mailto:{{ legal.donnees.contact }}">{{ legal.donnees.contact }}</a> : l'association vous répond dans un délai d'un mois.</p>
+      <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL (<a class="lien-texte" href="https://www.cnil.fr/fr/plaintes">www.cnil.fr</a>).</p>
+    </div>
+  </div>
+</section>

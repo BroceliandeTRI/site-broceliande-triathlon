@@ -1,0 +1,34 @@
+[
+  {
+    "id": "instagram",
+    "nom": "Instagram",
+    "url": "https://www.instagram.com/broceliandetriathlon/",
+    "libelle": "Instagram du club",
+    "pseudo": "@broceliandetriathlon",
+    "description": "photos et stories des courses"
+  },
+  {
+    "id": "facebook",
+    "nom": "Facebook",
+    "url": "https://www.facebook.com/broceliandetri/",
+    "libelle": "Facebook du club",
+    "pseudo": "/broceliandetri",
+    "description": "infos pratiques et évènements"
+  },
+  {
+    "id": "youtube",
+    "nom": "YouTube",
+    "url": "https://www.youtube.com/@BroceliandeTriathlon35",
+    "libelle": "Chaîne YouTube du club",
+    "pseudo": "@BroceliandeTriathlon35",
+    "description": "trailers et vidéos"
+  },
+  {
+    "id": "strava",
+    "nom": "Strava",
+    "url": "https://www.strava.com/clubs/262908",
+    "libelle": "Club Strava",
+    "pseudo": "",
+    "description": "Les stats du club"
+  }
+]

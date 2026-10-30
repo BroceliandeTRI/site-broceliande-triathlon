@@ -1,0 +1,73 @@
+---
+title: Contact
+description: "Adhésion, séance d'essai gratuite, évènements ou partenariat : écris au Brocéliande Triathlon, un membre du bureau te répond."
+permalink: /contact/
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(surtitre="Contact", titre="Une question ? Écris-nous") %}
+  <p class="bandeau__chapeau">Adhésion, séance d'essai gratuite, évènements ou partenariat : un membre du bureau te répond.</p>
+{% endcall %}
+
+<section class="section">
+  <div class="conteneur pt-64 pb-72 deux-colonnes deux-colonnes--contact">
+    <form class="formulaire" id="formulaire" action="{{ site.formulaire.action }}" method="{{ site.formulaire.methode }}" enctype="{{ site.formulaire.encodage }}" aria-label="Formulaire de contact" data-formulaire>
+      <p class="formulaire__obligatoire">Tous les champs sont obligatoires.</p>
+      <div class="grille min-200 g-16">
+        <div class="champ">
+          <label for="nom">Nom et prénom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" required>
+        </div>
+        <div class="champ">
+          <label for="mail">E-mail</label>
+          <input id="mail" name="email" type="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="champ">
+        <label for="sujet">Sujet</label>
+        <select id="sujet" name="sujet">
+          <option>Adhésion et séance d'essai</option>
+          <option>Entraînements</option>
+          <option>Triathlon de Brocéliande</option>
+          <option>Biathlon running</option>
+          <option>Partenariat</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="champ">
+        <label for="msg">Message</label>
+        <textarea id="msg" name="message" rows="6" required></textarea>
+      </div>
+      {# Champ piège anti-spam : invisible pour les visiteurs, rempli seulement par les robots #}
+      <div class="champ-piege" aria-hidden="true">
+        <label for="site-web">Ne pas remplir ce champ</label>
+        <input id="site-web" name="site_web" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button class="btn btn-orange btn--grand aligne-debut" type="submit">Envoyer</button>
+      <p class="formulaire__mention">Tes informations servent uniquement à te répondre. Voir la page <a class="lien-texte" href="/confidentialite/">Confidentialité</a>.</p>
+    </form>
+
+    <div class="coordonnees pile g-22">
+      <div class="pile g-4">
+        <h2 class="titre t-24 lh-texte">Par e-mail</h2>
+        <a class="lien-discret" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
+      <div class="pile g-8">
+        <h2 class="titre t-24 lh-texte">Nous trouver</h2>
+        <ul class="pile g-8">
+          {%- for lieu in lieux.contact %}
+          <li class="lieu lieu--{{ lieu.couleur }} lieu--compact"><b>{{ lieu.nom }}</b><span>{{ lieu.detail }}</span></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="pile g-10">
+        <h2 class="titre t-24 lh-texte">Sur les réseaux</h2>
+        <ul class="pilules">
+          {%- for reseau in reseaux %}
+          <li><a href="{{ reseau.url }}">{{ m.icone(reseau.id, 18) }}{{ reseau.nom }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

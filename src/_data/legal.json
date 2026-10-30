@@ -1,0 +1,20 @@
+{
+  "miseAJour": "29 octobre 2026",
+  "association": {
+    "nom": "Brocéliande Triathlon",
+    "forme": "Association loi 1901",
+    "rna": "W353006537",
+    "siege": "1 rue du Danube, 35160 Montfort-sur-Meu",
+    "email": "broceliandetriathlon@gmail.com"
+  },
+  "directeurPublication": "Le bureau de l'association",
+  "hebergeur": {
+    "nom": "GitHub, Inc. (service GitHub Pages)",
+    "adresse": "88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis",
+    "telephone": "+1 415 735 4488",
+    "site": "https://github.com"
+  },
+  "donnees": {
+    "contact": "broceliandetriathlon@gmail.com"
+  }
+}

@@ -1,0 +1,51 @@
+---
+title: Mentions légales
+description: "Mentions légales du site du Brocéliande Triathlon : éditeur du site, directeur de la publication, hébergeur, propriété des contenus et liens."
+permalink: /mentions-legales/
+---
+{%- import "macros.njk" as m with context -%}
+{#- Les informations propres au club (association, hébergeur…) sont dans src/_data/legal.json -#}
+{%- set asso = legal.association -%}
+
+{% call m.bandeau(surtitre="Informations légales", titre="Mentions légales") %}
+  <p class="bandeau__chapeau">Qui publie ce site, qui l'héberge, et à qui appartiennent ses contenus. Dernière mise à jour : {{ legal.miseAJour }}.</p>
+{% endcall %}
+
+<section class="section">
+  <div class="conteneur py-64">
+    <div class="texte-legal">
+      <h2 class="titre t-36">Éditeur du site</h2>
+      <p>Ce site est édité par l'association {{ asso.nom }}, club de triathlon de Montfort-sur-Meu.</p>
+      <dl>
+        <div><dt>Association</dt><dd>{{ asso.nom }} ({{ asso.forme }})</dd></div>
+        <div><dt>Numéro RNA</dt><dd>{{ asso.rna }}</dd></div>
+        <div><dt>Siège social</dt><dd>{{ asso.siege }}</dd></div>
+        <div><dt>Contact</dt><dd><a class="lien-texte" href="mailto:{{ asso.email }}">{{ asso.email }}</a></dd></div>
+      </dl>
+
+      <h2 class="titre t-36">Directeur de la publication</h2>
+      <p>{{ legal.directeurPublication }}.</p>
+
+      <h2 class="titre t-36">Hébergeur</h2>
+      <dl>
+        <div><dt>Nom</dt><dd>{{ legal.hebergeur.nom }}</dd></div>
+        <div><dt>Adresse</dt><dd>{{ legal.hebergeur.adresse }}</dd></div>
+        <div><dt>Téléphone</dt><dd>{{ legal.hebergeur.telephone }}</dd></div>
+        <div><dt>Site</dt><dd><a class="lien-texte" href="{{ legal.hebergeur.site }}">{{ legal.hebergeur.site | replace("https://", "") }}</a></dd></div>
+      </dl>
+
+      <h2 class="titre t-36">Propriété des contenus</h2>
+      <p>Les textes, photos et visuels du site appartiennent à l'association {{ asso.nom }} ou à leurs auteurs. Les photos de presse indiquent le nom de leur auteur et du journal. Les logos des partenaires et des collectivités appartiennent à leurs propriétaires respectifs.</p>
+      <p>Toute reproduction, même partielle, des contenus du site sans l'accord de l'association ou de leur auteur est interdite.</p>
+
+      <h2 class="titre t-36">Contenus Facebook et Instagram</h2>
+      <p>Les publications et la vidéo intégrées depuis Facebook et Instagram restent la propriété de leurs auteurs. Elles s'affichent avec les outils d'intégration fournis par Meta, et seulement avec votre accord : voir la page <a class="lien-texte" href="/confidentialite/">Confidentialité et cookies</a>.</p>
+
+      <h2 class="titre t-36">Liens vers d'autres sites</h2>
+      <p>Le site renvoie vers d'autres sites (Klikego, Fédération française de triathlon, partenaires, réseaux sociaux…). L'association n'est pas responsable de leur contenu ni de leur fonctionnement.</p>
+
+      <h2 class="titre t-36">Crédits</h2>
+      <p>Polices de caractères Anton et Barlow, sous licence SIL Open Font License, hébergées avec le site.</p>
+    </div>
+  </div>
+</section>

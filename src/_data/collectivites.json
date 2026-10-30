@@ -1,0 +1,27 @@
+[
+  {
+    "nom": "Ville de Montfort-sur-Meu",
+    "logo": "in_montfort.png",
+    "url": "https://www.montfort-sur-meu.bzh/"
+  },
+  {
+    "nom": "Montfort Communauté",
+    "logo": "in_montfortcom.jpg",
+    "url": "https://www.montfortcommunaute.bzh/"
+  },
+  {
+    "nom": "Espace aquatique Océlia",
+    "logo": "in_ocelia.png",
+    "url": "https://www.piscine-ocelia.com/"
+  },
+  {
+    "nom": "Commune d'Iffendic",
+    "logo": "in_iffendic.png",
+    "url": "https://www.iffendic.fr/"
+  },
+  {
+    "nom": "Département d'Ille-et-Vilaine",
+    "logo": "p_logo_dep_ille_vilaine_2008_svg_png.png",
+    "url": "https://www.ille-et-vilaine.fr/"
+  }
+]

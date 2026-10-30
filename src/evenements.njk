@@ -1,0 +1,118 @@
+---
+title: Nos évènements
+description: "Le club organise le Triathlon de Brocéliande et le Biathlon running, pour les licenciés comme pour les non-licenciés, adultes et enfants."
+permalink: /evenements/
+---
+{%- import "macros.njk" as m with context -%}
+{%- set tri = evenements.triathlon -%}
+{%- set bia = evenements.biathlon -%}
+
+{% call m.bandeau(surtitre="Nos évènements", titre="Deux rendez-vous, ouverts à tous") %}
+  <p class="bandeau__chapeau">Le club organise le Triathlon de Brocéliande et le Biathlon running, pour les licenciés comme pour les non-licenciés, adultes et enfants.</p>
+{% endcall %}
+
+{# Triathlon #}
+<section class="section fond-rose" id="triathlon">
+  <div class="conteneur py-64 evenement">
+    <div class="evenement__texte">
+      <div class="evenement__entete">
+        <p class="carte-evenement__surtitre">{{ tri.surtitre }}</p>
+        {{ m.compteARebours(tri.depart, "compte--grand") }}
+      </div>
+      <h2 class="titre t-64">{{ tri.nom }}</h2>
+      <p class="texte-600 mesure-60">{{ tri.texte }}</p>
+      <div class="rappel rappel--rose">
+        <h3 class="titre t-22 lh-texte">{{ tri.rappel.titre }}</h3>
+        <ul class="rappel__liste">
+          {%- for epreuve in tri.rappel.epreuves %}
+          <li><b>{{ epreuve.nom }}</b><span>{{ epreuve.detail }}</span></li>
+          {%- endfor %}
+        </ul>
+        {%- if tri.rappel.source %}
+        <p class="rappel__source">{{ tri.rappel.source }}</p>
+        {%- endif %}
+      </div>
+      {#- Parcours : masqués tant que "afficher" vaut false (message d'attente à la place) #}
+      {%- if tri.parcours and not tri.parcours.afficher %}
+      <div class="parcours parcours--a-venir">
+        <h3 class="titre t-22 lh-texte">{{ tri.parcours.titreAVenir }}</h3>
+        <p>{{ tri.parcours.messageAVenir }}</p>
+      </div>
+      {%- elif tri.parcours %}
+      <div class="parcours">
+        <h3 class="titre t-22 lh-texte">{{ tri.parcours.titre }}</h3>
+        <ul class="parcours__liste">
+          {%- for p in tri.parcours.liste %}
+          <li>
+            <b>{{ p.nom }}</b>
+            <span class="parcours__liens">
+              {%- for l in p.liens %}
+              <a href="{{ l.url }}">{{ l.texte }}</a>
+              {%- endfor %}
+            </span>
+          </li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+      <div class="boutons boutons--10">
+        {%- for b in tri.boutons %}
+        {{ m.bouton(b.texte, b.url, "noir" if loop.first else "contour") }}
+        {%- endfor %}
+      </div>
+    </div>
+    <figure class="affiche">
+      <img src="/assets/img/{{ tri.affiche.image }}" alt="{{ tri.affiche.alt }}" eleventy:widths="300,600" sizes="(min-width: 760px) 300px, 60vw">
+      <figcaption>{{ tri.affiche.legende }}</figcaption>
+    </figure>
+  </div>
+  {%- if tri.video %}
+  <div class="conteneur pb-64 pile g-16">
+    <h3 class="titre t-32">L'édition 2026 en vidéo</h3>
+    <div class="evenement__video">{{ m.videoFacebook(tri.video) }}</div>
+  </div>
+  {%- endif %}
+</section>
+
+{# Biathlon #}
+<section class="section fond-noir texte-fond" id="biathlon">
+  <div class="conteneur py-64 evenement">
+    <div class="evenement__texte">
+      <p class="carte-evenement__surtitre texte-orange">{{ bia.surtitre }}</p>
+      <h2 class="titre t-64">{{ bia.nom }}</h2>
+      <p class="texte-clair mesure-60">{{ bia.texte }}</p>
+      <div class="rappel rappel--sombre">
+        <h3 class="titre t-22 lh-texte">{{ bia.rappel.titre }}</h3>
+        <ul class="rappel__liste">
+          {%- for epreuve in bia.rappel.epreuves %}
+          <li><b>{{ epreuve.nom }}</b><span>{{ epreuve.detail }}</span></li>
+          {%- endfor %}
+        </ul>
+        {%- if bia.rappel.source %}
+        <p class="rappel__source">{{ bia.rappel.source }}</p>
+        {%- endif %}
+      </div>
+      <div class="boutons boutons--10">
+        {%- for b in bia.boutons %}
+        {{ m.bouton(b.texte, b.url, "orange" if loop.first else "contour") }}
+        {%- endfor %}
+      </div>
+    </div>
+    <figure class="affiche affiche--sombre">
+      <img src="/assets/img/{{ bia.affiche.image }}" alt="{{ bia.affiche.alt }}" eleventy:widths="300,600" sizes="(min-width: 760px) 300px, 60vw">
+      <figcaption>{{ bia.affiche.legende }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+{# Archives des résultats #}
+<section class="section" id="resultats">
+  <div class="conteneur pt-56 pb-64 pile g-20">
+    <h2 class="titre t-40">Archives · Résultats du Triathlon de Brocéliande</h2>
+    <div class="grille min-220 g-12">
+      {%- for r in resultats %}
+      {{ m.carteResultat(r) }}
+      {%- endfor %}
+    </div>
+  </div>
+</section>

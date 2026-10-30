@@ -1,0 +1,96 @@
+{
+  "saison": "2026 – 2027",
+  "disciplines": [
+    {
+      "titre": "Triathlon",
+      "couleur": "triathlon",
+      "pictos": ["picto_swim.png", "picto_bike.png", "picto_run.png"],
+      "groupes": [
+        {
+          "titre": "",
+          "articles": [
+            { "nom": "Trifonction manches courtes", "image": "tenue26_tri_manches.jpg" },
+            { "nom": "Trifonction sans manches", "image": "tenue26_tri_sans_manches.jpg" }
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Natation",
+      "couleur": "noir",
+      "pictos": ["picto_swim.png"],
+      "groupes": [
+        {
+          "titre": "",
+          "articles": [
+            { "nom": "Maillot de bain", "image": "tenue26_nat_maillot_bain.jpg" },
+            { "nom": "Boxer de bain", "image": "tenue26_nat_boxer.jpg" }
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Vélo",
+      "couleur": "orange",
+      "pictos": ["picto_bike.png"],
+      "groupes": [
+        {
+          "titre": "",
+          "articles": [
+            { "nom": "Cuissard à bretelles", "image": "tenue26_velo_cuissard.jpg" },
+            { "nom": "Veste manches longues", "image": "tenue26_velo_veste.jpg" }
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Course à pied",
+      "couleur": "rose",
+      "pictos": ["picto_run.png"],
+      "groupes": [
+        {
+          "titre": "Noir",
+          "articles": [
+            { "nom": "Tee-shirt manches courtes", "image": "tenue26_cap_noir_teeshirt.jpg" },
+            { "nom": "Débardeur", "image": "tenue26_cap_noir_debardeur.jpg" },
+            { "nom": "Short ample", "image": "tenue26_cap_noir_short_ample.jpg" },
+            { "nom": "Short fendu", "image": "tenue26_cap_noir_short_fendu.jpg" }
+          ]
+        },
+        {
+          "titre": "Blanc",
+          "articles": [
+            { "nom": "Tee-shirt manches courtes", "image": "tenue26_cap_blanc_teeshirt.jpg" },
+            { "nom": "Tee-shirt manches longues", "image": "tenue26_cap_blanc_manches_longues.jpg" },
+            { "nom": "Débardeur", "image": "tenue26_cap_blanc_debardeur.jpg" },
+            { "nom": "Maillot hiver manches longues", "image": "tenue26_cap_blanc_maillot_hiver.jpg" }
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Accessoires et quotidien",
+      "couleur": "gris",
+      "pictos": [],
+      "groupes": [
+        {
+          "titre": "Accessoires",
+          "articles": [
+            { "nom": "Manchettes", "image": "tenue26_acc_manchettes.jpg" },
+            { "nom": "Jambières", "image": "tenue26_acc_jambieres.jpg" },
+            { "nom": "Bonnet", "image": "tenue26_acc_bonnet.jpg" },
+            { "nom": "Chaussettes hautes", "image": "tenue26_acc_chaussettes.jpg" }
+          ]
+        },
+        {
+          "titre": "Au quotidien",
+          "articles": [
+            { "nom": "Sweat à capuche", "image": "tenue26_sweat.jpg" },
+            { "nom": "T-shirt", "image": "tenue26_quotidien_teeshirt.jpg" },
+            { "nom": "Casquette trucker", "image": "tenue26_quotidien_casquette.jpg" }
+          ]
+        }
+      ]
+    }
+  ]
+}

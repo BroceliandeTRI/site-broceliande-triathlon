@@ -1,0 +1,18 @@
+{
+  "roles": [
+    { "role": "Président", "nom": "Romain Jeusset" },
+    { "role": "Vice-président", "nom": "Alexis Tirel" },
+    { "role": "Trésorière", "nom": "Sylvie Goltais" },
+    { "role": "Trésorier adjoint", "nom": "Éric Glandais" },
+    { "role": "Secrétaire", "nom": "Nathalie Chatelet" }
+  ],
+  "membres": ["Céline Simon", "Éric Gapais", "Nadège Corlay", "Julien Neveu", "Killian Ménager"],
+  "missions": [
+    "Organiser le triathlon et le biathlon",
+    "Organiser les stages et moments festifs",
+    "Chercher partenaires et subventions",
+    "Faire vivre les réseaux et le site",
+    "Prendre des photos",
+    "Gérer les commandes textiles"
+  ]
+}

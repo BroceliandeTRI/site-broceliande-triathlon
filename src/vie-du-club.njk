@@ -1,0 +1,89 @@
+---
+title: Vie du club
+description: "Résultats du week-end, portraits, stages et coulisses des évènements : ce que vivent les adhérents du Brocéliande Triathlon, saison après saison."
+permalink: /vie-du-club/
+contenusMeta: true
+---
+{%- import "macros.njk" as m with context -%}
+{%- set pageFacebook = (reseaux | filtrer("id", "facebook"))[0] -%}
+{%- set compteInstagram = (reseaux | filtrer("id", "instagram"))[0] -%}
+
+{% call m.bandeau(surtitre="Vie du club", titre="Les BT sur tous les fronts") %}
+  <p class="bandeau__chapeau">Résultats du week-end, portraits, stages et coulisses des évènements : ce que vivent les adhérents, saison après saison.</p>
+{% endcall %}
+
+{# Agenda : frise des prochains rendez-vous, avec la progression de la saison #}
+<section class="section fond-noir frise-section" aria-labelledby="agenda-titre">
+  <div class="conteneur py-48 pile g-24">
+    <div class="section__tete section__tete--32">
+      <div class="section__titres g-8">
+        <p class="surtitre surtitre--sombre">Les prochains rendez-vous</p>
+        <h2 class="titre t-44" id="agenda-titre">Agenda</h2>
+      </div>
+      <a class="lien-fort lien-fort--clair lien-fort--orange" href="/evenements/">Nos évènements</a>
+    </div>
+    {{ m.friseAgenda(agenda) }}
+  </div>
+</section>
+
+{# Revue de presse : l'article le plus récent à la une, puis les autres #}
+<section class="section">
+  <div class="conteneur pt-64 pb-56 pile g-24">
+    <div class="section__titres g-8">
+      <p class="surtitre">Revue de presse</p>
+      <h2 class="titre t-48">On parle du BT</h2>
+    </div>
+    <div class="presse">
+      {%- for article in presse %}
+      {{ m.cartePresse(article, loop.first) }}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# Facebook à gauche, Instagram à droite #}
+<section class="section fond-blanc">
+  <div class="conteneur py-64 reseaux-direct">
+    <div class="reseaux-direct__colonne">
+      <div class="section__tete section__tete--32">
+        <div class="section__titres g-8">
+          <p class="surtitre">Dernières publications</p>
+          <h2 class="titre t-40">Sur Facebook</h2>
+        </div>
+        <a class="lien-fort" href="{{ pageFacebook.url }}">Suivre la page</a>
+      </div>
+      {{ m.contenuFacebook(4, 3) }}
+    </div>
+    <div class="reseaux-direct__colonne">
+      <div class="section__tete section__tete--32">
+        <div class="section__titres g-8">
+          <p class="surtitre">{{ compteInstagram.pseudo }}</p>
+          <h2 class="titre t-40">Sur Instagram</h2>
+        </div>
+        <a class="lien-fort" href="{{ compteInstagram.url }}">Suivre le compte</a>
+      </div>
+      {{ m.contenuInstagram(3, 4) }}
+    </div>
+  </div>
+</section>
+
+{# Réseaux du club #}
+<section class="section fond-noir">
+  <div class="conteneur pt-64 pb-72 pile g-28">
+    <h2 class="titre t-44">Suivez les BT au quotidien</h2>
+    <ul class="suivre">
+      {%- for reseau in reseaux %}
+      <li>
+        <a class="suivre__carte suivre__carte--{{ reseau.id }}" href="{{ reseau.url }}">
+          <span class="suivre__logo">{{ m.icone(reseau.id, 30) }}</span>
+          <span class="suivre__texte">
+            <b>{{ reseau.nom }}</b>
+            {%- if reseau.pseudo %}<span class="suivre__pseudo">{{ reseau.pseudo }}</span>{% endif %}
+            <span>{{ reseau.description }}</span>
+          </span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

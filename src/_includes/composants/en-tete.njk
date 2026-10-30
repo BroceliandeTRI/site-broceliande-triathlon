@@ -1,0 +1,35 @@
+{%- import "macros.njk" as m with context -%}
+<header class="en-tete" data-en-tete>
+  <div class="en-tete__barre">
+    <a class="medaillon" href="/" aria-label="Brocéliande Triathlon, accueil">
+      <img src="/assets/img/logo_bt_white.png" alt="" loading="eager" eleventy:widths="276">
+    </a>
+
+    {#- Raccourci visible sur tablette et téléphone (le bouton complet est dans le menu) #}
+    <a class="btn btn-orange en-tete__rejoindre" href="{{ navigation.adhesion.url }}"{% if page.url == navigation.adhesion.url %} aria-current="page"{% endif %}>Rejoindre</a>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" data-burger>
+      <span class="burger__icone burger__icone--ouvrir">{{ m.icone("menu", 22) }}</span>
+      <span class="burger__icone burger__icone--fermer">{{ m.icone("fermer", 22) }}</span>
+      <span class="burger__texte">Menu</span>
+    </button>
+
+    <div class="menu" id="menu" data-menu>
+      <nav class="menu__nav" aria-label="Navigation principale">
+        <ul>
+          {%- for lien in navigation.principale %}
+          <li><a href="{{ lien.url }}"{% if page.url == lien.url %} aria-current="page"{% elif page.url.startsWith(lien.url) %} aria-current="true"{% endif %}>{{ lien.texte }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+      <div class="menu__actions">
+        <ul class="menu__reseaux">
+          {%- for reseau in reseaux %}
+          <li><a href="{{ reseau.url }}" aria-label="{{ reseau.libelle }}">{{ m.icone(reseau.id) }}</a></li>
+          {%- endfor %}
+        </ul>
+        <a class="btn btn-orange btn--en-tete menu__adhesion" href="{{ navigation.adhesion.url }}"{% if page.url == navigation.adhesion.url %} aria-current="page"{% endif %}>{{ navigation.adhesion.texte }}</a>
+      </div>
+    </div>
+  </div>
+</header>

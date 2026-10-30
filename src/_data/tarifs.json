@@ -1,0 +1,22 @@
+[
+  {
+    "prix": "150 €",
+    "formule": "Licence compétition",
+    "detail": "Adhésion au club et licence FFTRI compétition"
+  },
+  {
+    "prix": "120 €",
+    "formule": "Licence loisir / entraînement",
+    "detail": "Adhésion au club et licence FFTRI loisir"
+  },
+  {
+    "prix": "85 €",
+    "formule": "Licence jeune",
+    "detail": "Loisir ou compétition"
+  },
+  {
+    "prix": "35 €",
+    "formule": "Vélo uniquement",
+    "detail": "Adhésion au club"
+  }
+]

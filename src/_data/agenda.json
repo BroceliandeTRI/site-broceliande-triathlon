@@ -1,0 +1,34 @@
+[
+  {
+    "jour": "FIN",
+    "mois": "JANV.",
+    "titre": "Galette des rois",
+    "lieu": "Présentation du triathlon et des sponsors",
+    "couleur": "noir",
+    "date": "2027-01"
+  },
+  {
+    "jour": "FÉV.",
+    "mois": "2027",
+    "titre": "Ouverture des inscriptions",
+    "lieu": "Triathlon de Brocéliande, sur Klikego",
+    "couleur": "orange",
+    "date": "2027-02"
+  },
+  {
+    "jour": "AVR. – JUIN",
+    "mois": "2027",
+    "titre": "Biathlon running",
+    "lieu": "Date et lieu à venir",
+    "couleur": "noir",
+    "date": ""
+  },
+  {
+    "jour": "23",
+    "mois": "MAI",
+    "titre": "Triathlon de Brocéliande",
+    "lieu": "Lac de Trémelin, Iffendic",
+    "couleur": "rose",
+    "date": "2027-05-23"
+  }
+]

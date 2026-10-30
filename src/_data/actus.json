@@ -1,0 +1,24 @@
+[
+  {
+    "categorie": "Presse",
+    "couleurCategorie": "noir",
+    "infos": "Ouest-France · juin 2026",
+    "titre": "Triathlon de la Côte d'Émeraude : Maxime Dransart s'impose avec le record du parcours",
+    "image": "presse_cote-emeraude-2026.jpg",
+    "alt": "Maxime Dransart, dossard 18, dans la dernière ligne droite du triathlon de la Côte d'Émeraude à Saint-Malo",
+    "credit": "Photo : Thierry Morin / Ouest-France",
+    "cadrage": "",
+    "url": "https://www.ouest-france.fr/sport/triathlon/triathlon-de-la-cote-demeraude-maxime-dransart-simpose-avec-le-record-du-parcours-8f6d7fe6-628d-11f1-b037-716b21dc467b"
+  },
+  {
+    "categorie": "Presse",
+    "couleurCategorie": "noir",
+    "infos": "Ouest-France · avril 2026",
+    "titre": "Iffendic : le Triathlon de Brocéliande s'invite à Trémelin",
+    "image": "presse_tremelin-2026.jpg",
+    "alt": "Départ de la natation dans le lac de Trémelin",
+    "credit": "Photo : Marine Pirio / Ouest-France",
+    "cadrage": "",
+    "url": "https://www.ouest-france.fr/bretagne/iffendic-35750/iffendic-le-triathlon-de-broceliande-sinvite-a-tremelin-7fd17f90-42d2-11f1-b649-032b4fb71ff8"
+  }
+]

@@ -1,0 +1,140 @@
+{
+  "triathlon": {
+    "nom": "Triathlon de Brocéliande",
+    "depart": "2027-05-23T09:30:00+02:00",
+    "surtitreAccueil": "6e édition · Dimanche 23 mai 2027",
+    "resumeAccueil": "Lac de Trémelin, Iffendic. Formats S et M en individuel ou en relais, et les animathlons pour les 6-13 ans. Inscriptions en février 2027 sur Klikego.",
+    "surtitre": "6e édition · Dimanche 23 mai 2027 · Lac de Trémelin, Iffendic",
+    "texte": "Près de 700 athlètes sur une journée, au bord du lac de Trémelin. Formats S et M en individuel ou en relais, et les animathlons pour les 6-13 ans.",
+    "rappel": {
+      "titre": "Rappel de l'édition 2026",
+      "epreuves": [
+        {
+          "nom": "Triathlon S · 9h30",
+          "detail": "750 m · 20 km · 5 km"
+        },
+        {
+          "nom": "Animathlons · 12h00",
+          "detail": "6-9 ans et 10-13 ans, gratuit"
+        },
+        {
+          "nom": "Triathlon M · 14h15",
+          "detail": "1 500 m · 38 km · 10 km"
+        }
+      ],
+      "source": "Source : affiche officielle 2026."
+    },
+    "boutons": [
+      {
+        "texte": "Inscriptions en février 2027",
+        "url": ""
+      },
+      {
+        "texte": "Règlement 2026",
+        "url": "/assets/docs/triathlon-2026-reglement.pdf"
+      },
+      {
+        "texte": "Check-list du triathlète",
+        "url": "/assets/docs/check-list-triathlete.pdf"
+      },
+      {
+        "texte": "Résultats",
+        "url": "#resultats"
+      }
+    ],
+    "affiche": {
+      "image": "affiche2026.jpg",
+      "alt": "Affiche du Triathlon de Brocéliande 2026",
+      "legende": "L'affiche 2026",
+      "ratio": "1241 / 1755"
+    },
+    "video": {
+      "url": "https://www.facebook.com/reel/1011469981568842/",
+      "titre": "Le Triathlon de Brocéliande 2026 en vidéo",
+      "duree": "4 min",
+      "auteur": "Alexis Tirel",
+      "affiche": "video_triathlon_2026.jpg"
+    },
+    "parcours": {
+      "afficher": false,
+      "titreAVenir": "Parcours de l'édition 2027",
+      "messageAVenir": "Le parcours 2027 sera communiqué à l'ouverture des inscriptions.",
+      "titre": "Parcours de l'édition 2026",
+      "liste": [
+        {
+          "nom": "Natation S et M",
+          "liens": [
+            {
+              "texte": "Plan (PDF)",
+              "url": "/assets/docs/triathlon-2026-parcours-natation-s-m.pdf"
+            }
+          ]
+        },
+        {
+          "nom": "Vélo S",
+          "liens": [
+            {
+              "texte": "Plan (PDF)",
+              "url": "/assets/docs/triathlon-2026-parcours-velo-s.pdf"
+            },
+            {
+              "texte": "Tracé Garmin",
+              "url": "https://connect.garmin.com/modern/course/418667359"
+            }
+          ]
+        },
+        {
+          "nom": "Vélo M",
+          "liens": [
+            {
+              "texte": "Plan (PDF)",
+              "url": "/assets/docs/triathlon-2026-parcours-velo-m.pdf"
+            },
+            {
+              "texte": "Tracé Garmin",
+              "url": "https://connect.garmin.com/modern/course/418085309"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "biathlon": {
+    "nom": "Biathlon running",
+    "surtitreAccueil": "Date et lieu à venir",
+    "resumeAccueil": "Course à pied sur boucle et tir à la carabine laser. Formats sprint et poursuite, courses enfants gratuites.",
+    "surtitre": "Date et lieu à venir",
+    "texte": "La course à pied alterne avec le tir à la carabine laser. La boucle fait le tour des terrains de foot, sur un revêtement stabilisé avec un peu d'herbe. Formats sprint et poursuite, à partir de 14 ans, et des courses enfants gratuites.",
+    "rappel": {
+      "titre": "Rappel de l'édition 2025",
+      "epreuves": [
+        {
+          "nom": "Biathlon running · 9h00",
+          "detail": "15 €, inscription sur Klikego"
+        },
+        {
+          "nom": "Enfants 6-9 ans · 10h15",
+          "detail": "Gratuit"
+        },
+        {
+          "nom": "Enfants 10-13 ans · 10h30",
+          "detail": "Gratuit"
+        }
+      ],
+      "source": ""
+    },
+    "boutons": [
+      {
+        "texte": "Résultats 2025",
+        "url": "https://www.klikego.com/resultats/biathlon-running-sprint--poursuite-2025/1644013702567-8"
+      }
+    ],
+    "affiche": {
+      "image": "affiche_biathlon.jpg",
+      "alt": "Affiche du biathlon running 2025",
+      "altAccueil": "Affiche du biathlon running, édition 2025",
+      "legende": "L'affiche 2025",
+      "ratio": "1080 / 1519"
+    }
+  }
+}

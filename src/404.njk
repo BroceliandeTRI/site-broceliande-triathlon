@@ -1,0 +1,18 @@
+---
+title: Page introuvable
+description: "Cette page n'existe pas ou a été déplacée."
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(surtitre="Erreur 404", titre="Page introuvable") %}
+  <p class="bandeau__chapeau">Cette page n'existe pas ou a été déplacée.</p>
+{% endcall %}
+
+<section class="section">
+  <div class="conteneur py-64 boutons">
+    {{ m.bouton("Retour à l'accueil", "/", "noir") }}
+    {{ m.bouton("Nous contacter", "/contact/", "orange") }}
+  </div>
+</section>

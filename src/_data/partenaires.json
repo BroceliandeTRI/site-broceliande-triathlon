@@ -1,0 +1,140 @@
+{
+  "principaux": [
+    {
+      "nom": "Bricomarché",
+      "logo": "sp_bricomarche.jpg",
+      "activite": "Bricolage, maison et jardin",
+      "commune": "Pleumeleuc",
+      "description": "Magasin de matériaux et de bricolage, avec une large gamme de produits pour la maison et le jardin.",
+      "url": "https://www.bricomarche.com/magasin/pleumeleuc/20212",
+      "texteLien": "bricomarche.com"
+    },
+    {
+      "nom": "BDS",
+      "logo": "sp_bds.jpg",
+      "activite": "Sports bar, restaurant, café",
+      "commune": "Rennes, Pacé, Vern-sur-Seiche, Laval",
+      "description": "Le lieu pour passer un bon moment autour d’un verre ou d’un repas, en regardant les évènements sportifs.",
+      "url": "https://www.bds-restaurant.com/",
+      "texteLien": "bds-restaurant.com"
+    },
+    {
+      "nom": "L’Instant…",
+      "logo": "sp_instant.png",
+      "activite": "Brasserie pizzeria",
+      "commune": "Mordelles",
+      "description": "Restaurant-brasserie : pizzas, jarrets, poissons, burgers et pâtes fraîches cuits au feu de bois, sur place ou à emporter.",
+      "url": "https://www.linstantmordelles.fr/",
+      "texteLien": "linstantmordelles.fr"
+    },
+    {
+      "nom": "Groupe Vert",
+      "logo": "sp_groupevert.png",
+      "activite": "Nettoyage professionnel",
+      "commune": "Bretagne",
+      "description": "Entreprise bretonne de propreté et de nettoyage pour les professionnels, avec une agence à Rennes.",
+      "url": "https://groupe-vert.com/",
+      "texteLien": "groupe-vert.com"
+    },
+    {
+      "nom": "Nefty",
+      "logo": "sp_nefty.png",
+      "activite": "Électricité, plomberie, chauffage",
+      "commune": "Boisgervilly",
+      "description": "Artisan en électricité générale, plomberie, chauffage et domotique.",
+      "url": "http://www.nefty.fr/",
+      "texteLien": "nefty.fr"
+    },
+    {
+      "nom": "C Marjo Clean",
+      "logo": "sp_marjoclean.jpg",
+      "activite": "Entreprise de nettoyage",
+      "commune": "Montfort-sur-Meu",
+      "description": "Entreprise de nettoyage installée à Montfort-sur-Meu.",
+      "url": "https://www.facebook.com/p/C-MARJO-CLEAN-61551931293074/",
+      "texteLien": "Page Facebook"
+    },
+    {
+      "nom": "Treebal",
+      "logo": "sp_treebal.jpg",
+      "activite": "Numérique responsable",
+      "commune": "Bretagne",
+      "description": "Messagerie et réseau social européens, éco-responsables et éthiques, conçus en Bretagne.",
+      "url": "https://www.treebal.green/",
+      "texteLien": "treebal.green"
+    },
+    {
+      "nom": "Monsieur Courtier",
+      "logo": "sp_mcourtier.jpg",
+      "activite": "Courtage en assurances et financement",
+      "commune": "Rennes",
+      "description": "Cabinet de courtage pour les crédits, les prêts professionnels et les assurances.",
+      "url": "https://monsieurcourtier.fr/",
+      "texteLien": "monsieurcourtier.fr"
+    },
+    {
+      "nom": "i-Run Rennes",
+      "logo": "sp_irun.png",
+      "activite": "Magasin running, trail et outdoor",
+      "commune": "Rennes",
+      "description": "Magasin spécialisé en running, trail, fitness et outdoor, à Rennes.",
+      "url": "https://www.facebook.com/i.run.rennes/",
+      "texteLien": "Page Facebook"
+    },
+    {
+      "nom": "Dolmen",
+      "logo": "sp_dolmen.jpg",
+      "activite": "Marketing local",
+      "commune": "Saint-Grégoire",
+      "description": "Plateforme de marketing local et de collecte de données pour les enseignes et leurs points de vente.",
+      "url": "https://www.dolmen.tech/",
+      "texteLien": "dolmen.tech"
+    },
+    {
+      "nom": "Triscale",
+      "logo": "triscale.png",
+      "activite": "Coaching d’entraînement par IA",
+      "commune": "Bretagne",
+      "description": "Plans d’entraînement personnalisés pour triathlètes, coureurs et cyclistes. Le club s’appuie sur Triscale pour accompagner ses athlètes et ses coachs.",
+      "url": "https://www.triscale.eu/",
+      "texteLien": "triscale.eu"
+    }
+  ],
+  "autres": [
+    "Boulangerie Pâtisserie Les 2 R",
+    "Groupama",
+    "Breizh Optical",
+    "Ambulance Clouet",
+    "Épicerie fine Perrette",
+    "Montfort Optic",
+    "La Petite Marchande de Prose",
+    "Sport 2000",
+    "Maison K",
+    "Le Clos Margot",
+    "Bijouterie Beaudouin",
+    "Boulangerie Pâtisserie Carpentier",
+    "Espace Émeraude",
+    "Delko",
+    "Coiff&Moi",
+    "Pub Le 28",
+    "Deneuré Solutions",
+    "Iffendic Informatique",
+    "Isoreno Façade",
+    "Beer Zone",
+    "Salon Saint Nicolas",
+    "Les Pépites",
+    "Brocéliande Fleurs",
+    "Les Couleurs du Vignoble",
+    "Voyage Allaire",
+    "Cordonnerie Vilfeu",
+    "Influence Gourmande",
+    "Salon Belle Gueule",
+    "Les Couleurs du Pain",
+    "Cave Saint Nicolas",
+    "Herboriste de la Cane",
+    "Sohby Sport",
+    "La Ferme à Marcus",
+    "Espace Berson",
+    "La Scala"
+  ]
+}

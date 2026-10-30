@@ -1,0 +1,42 @@
+[
+  {
+    "nom": "Natation",
+    "picto": "picto_swim.png",
+    "couleur": "noir",
+    "horaires": [
+      { "libelle": "Mardi", "valeur": "20h45 – 21h45" },
+      { "libelle": "Jeudi", "valeur": "20h15 – 21h15" }
+    ],
+    "texte": "Piscine Océlia de Montfort-sur-Meu, d'octobre à avril : 10 nageurs maximum le mardi, 40 le jeudi, pas de séance pendant les vacances scolaires. Eau libre au lac de Trémelin, 19h – 20h en semaine du 1er mai au 31 octobre, dès 2 nageurs, souvent précédée d'un footing. Combinaison ou bouée obligatoire."
+  },
+  {
+    "nom": "Vélo",
+    "picto": "picto_bike.png",
+    "couleur": "orange",
+    "horaires": [
+      { "libelle": "Dimanche", "valeur": "9h00 – 12h00" },
+      { "libelle": "Groupes", "valeur": "par niveau" }
+    ],
+    "texte": "Sortie longue au départ de la piscine de Montfort-sur-Meu, avec plusieurs distances et parfois un travail spécifique. Casque obligatoire, ravitaillement et éléments de visibilité à prévoir."
+  },
+  {
+    "nom": "Course à pied",
+    "picto": "picto_run.png",
+    "couleur": "rose",
+    "horaires": [
+      { "libelle": "Mercredi", "valeur": "18h30 – 20h00" },
+      { "libelle": "Saison", "valeur": "septembre – juin" }
+    ],
+    "texte": "Séance au stade d'athlétisme de Montfort-sur-Meu."
+  },
+  {
+    "nom": "PPG",
+    "picto": "",
+    "couleur": "gris",
+    "horaires": [
+      { "libelle": "Chaque semaine", "valeur": "2 fiches" },
+      { "libelle": "Où", "valeur": "chez soi ou à plusieurs" }
+    ],
+    "texte": "Une séance de renforcement et une séance de mobilité et d'étirements, sous forme de fiche, à faire quand tu veux."
+  }
+]

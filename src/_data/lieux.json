@@ -1,0 +1,12 @@
+{
+  "entrainements": [
+    { "nom": "Piscine Océlia", "detail": "Montfort-sur-Meu · natation d'octobre à avril", "couleur": "noir" },
+    { "nom": "Stade d'athlétisme", "detail": "Montfort-sur-Meu · course à pied le mercredi", "couleur": "rose" },
+    { "nom": "Départ des sorties vélo", "detail": "Piscine de Montfort-sur-Meu, le dimanche à 9h", "couleur": "orange" }
+  ],
+  "contact": [
+    { "nom": "COSEC de Montfort-sur-Meu", "detail": "Permanences d'inscription", "couleur": "noir" },
+    { "nom": "Piscine Océlia, Montfort-sur-Meu", "detail": "Natation et départ des sorties vélo", "couleur": "noir" },
+    { "nom": "Stade d'athlétisme, Montfort-sur-Meu", "detail": "Course à pied du mercredi", "couleur": "rose" }
+  ]
+}

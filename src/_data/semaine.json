@@ -1,0 +1,192 @@
+{
+  "fichesPPG": {
+    "texte": "",
+    "url": ""
+  },
+  "heureDebut": 8,
+  "heureFin": 22,
+  "jours": [
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
+    "Dimanche"
+  ],
+  "legende": [
+    {
+      "type": "natation",
+      "texte": "Natation"
+    },
+    {
+      "type": "velo",
+      "texte": "Vélo"
+    },
+    {
+      "type": "course",
+      "texte": "Course à pied"
+    },
+    {
+      "type": "eau-libre",
+      "texte": "Eau libre, dès 2 nageurs"
+    },
+    {
+      "type": "footing",
+      "texte": "Footing avant l'eau libre"
+    },
+    {
+      "type": "regroupement",
+      "texte": "Selon le regroupement de chacun"
+    }
+  ],
+  "saisons": [
+    {
+      "id": "hiver",
+      "libelle": "Octobre – avril",
+      "note": "D’octobre à avril : la base encadrée. En septembre, la course à pied du mercredi reprend avant la piscine, et l’eau libre reste possible jusqu’au 31 octobre.",
+      "seances": [
+        {
+          "jour": "Mardi",
+          "debut": "20:45",
+          "fin": "21:45",
+          "type": "natation",
+          "titre": "Natation",
+          "lieu": "Piscine Océlia"
+        },
+        {
+          "jour": "Mercredi",
+          "debut": "18:30",
+          "fin": "20:00",
+          "type": "course",
+          "titre": "Course à pied",
+          "lieu": "Stade, Montfort"
+        },
+        {
+          "jour": "Jeudi",
+          "debut": "20:15",
+          "fin": "21:15",
+          "type": "natation",
+          "titre": "Natation",
+          "lieu": "Piscine Océlia"
+        },
+        {
+          "jour": "Dimanche",
+          "debut": "09:00",
+          "fin": "12:00",
+          "type": "velo",
+          "titre": "Vélo",
+          "lieu": "Départ piscine"
+        }
+      ]
+    },
+    {
+      "id": "ete",
+      "libelle": "Mai – septembre",
+      "note": "De mai à septembre : eau libre de 19h à 20h en semaine, dès 2 nageurs, souvent précédée d’un footing. La course à pied du mercredi a lieu de septembre à juin ; en juillet et en août, elle continue en fonction du regroupement de chacun, sous réserve d’accès à la piste. Le vélo du dimanche continue lui aussi en fonction du regroupement de chacun.",
+      "seances": [
+        {
+          "jour": "Lundi",
+          "debut": "18:30",
+          "fin": "19:00",
+          "type": "footing",
+          "titre": "Footing",
+          "lieu": "avant l’eau libre"
+        },
+        {
+          "jour": "Lundi",
+          "debut": "19:00",
+          "fin": "20:00",
+          "type": "eau-libre",
+          "titre": "Eau libre",
+          "lieu": "Trémelin"
+        },
+        {
+          "jour": "Mardi",
+          "debut": "18:30",
+          "fin": "19:00",
+          "type": "footing",
+          "titre": "Footing",
+          "lieu": "avant l’eau libre"
+        },
+        {
+          "jour": "Mardi",
+          "debut": "19:00",
+          "fin": "20:00",
+          "type": "eau-libre",
+          "titre": "Eau libre",
+          "lieu": "Trémelin"
+        },
+        {
+          "jour": "Mercredi",
+          "debut": "18:30",
+          "fin": "20:00",
+          "type": "course",
+          "colonne": "gauche",
+          "titre": "Course à pied",
+          "lieu": "Stade, Montfort",
+          "note": "Jusqu’en juin, reprise en septembre"
+        },
+        {
+          "jour": "Mercredi",
+          "debut": "18:30",
+          "fin": "19:00",
+          "type": "footing",
+          "colonne": "droite",
+          "titre": "Footing",
+          "lieu": ""
+        },
+        {
+          "jour": "Mercredi",
+          "debut": "19:00",
+          "fin": "20:00",
+          "type": "eau-libre",
+          "colonne": "droite",
+          "titre": "Eau libre",
+          "lieu": "Trémelin"
+        },
+        {
+          "jour": "Jeudi",
+          "debut": "18:30",
+          "fin": "19:00",
+          "type": "footing",
+          "titre": "Footing",
+          "lieu": "avant l’eau libre"
+        },
+        {
+          "jour": "Jeudi",
+          "debut": "19:00",
+          "fin": "20:00",
+          "type": "eau-libre",
+          "titre": "Eau libre",
+          "lieu": "Trémelin"
+        },
+        {
+          "jour": "Vendredi",
+          "debut": "18:30",
+          "fin": "19:00",
+          "type": "footing",
+          "titre": "Footing",
+          "lieu": "avant l’eau libre"
+        },
+        {
+          "jour": "Vendredi",
+          "debut": "19:00",
+          "fin": "20:00",
+          "type": "eau-libre",
+          "titre": "Eau libre",
+          "lieu": "Trémelin"
+        },
+        {
+          "jour": "Dimanche",
+          "debut": "09:00",
+          "fin": "12:00",
+          "type": "velo",
+          "regroupement": true,
+          "titre": "Vélo",
+          "lieu": "Selon les groupes"
+        }
+      ]
+    }
+  ]
+}

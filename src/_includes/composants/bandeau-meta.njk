@@ -1,0 +1,15 @@
+{#
+  Demande d'accord unique pour les contenus de Meta (publications Facebook et Instagram).
+  Affichée par le script seulement si le visiteur n'a pas encore fait de choix (gardé 6 mois).
+  « Refuser » et « Accepter » ont la même présentation, comme le demande la CNIL.
+#}
+<section class="bandeau-meta" data-bandeau-meta aria-label="Publications Facebook et Instagram" hidden>
+  <div class="bandeau-meta__contenu">
+    <p><b>Publications Facebook et Instagram</b><span class="bandeau-meta__long">Cette page peut afficher les dernières publications du club. Elles sont fournies par Meta, qui dépose alors des cookies et peut suivre votre navigation.</span><span class="bandeau-meta__court">Fournies par Meta, qui dépose des cookies.</span> <a href="/confidentialite/">En savoir plus<span class="sr-only"> sur les cookies de Meta</span></a></p>
+    <div class="bandeau-meta__boutons">
+      <button class="btn btn-contour btn--petit" type="button" data-accord-meta="non">Refuser</button>
+      <button class="btn btn-contour btn--petit" type="button" data-accord-meta="oui">Accepter</button>
+    </div>
+  </div>
+</section>
+<p class="sr-only" aria-live="polite" data-annonce-meta></p>

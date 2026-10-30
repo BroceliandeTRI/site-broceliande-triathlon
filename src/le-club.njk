@@ -1,0 +1,137 @@
+---
+title: Le club
+description: "Le Brocéliande Triathlon, le BT pour les intimes, c'est avant tout un club à l'esprit famille, construit autour de ses adhérents. Histoire, équipe et équipement du club."
+permalink: /le-club/
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(surtitre="Le club", titre="Bienvenue au BT !", deuxColonnes=true) %}
+  <p>Le Brocéliande Triathlon, le BT pour les intimes, c'est avant tout un club à l'esprit famille, construit autour de ses adhérents. Chaque moment partagé permet de progresser ensemble, quels que soient l'objectif et le niveau de chacun : du débutant curieux à l'athlète aguerri des formats longue distance.</p>
+  <p class="titre t-24 lh-texte texte-blanc">S'entraîner, mais avant tout <span class="texte-orange">s'entraider.</span></p>
+{% endcall %}
+
+{# Histoire #}
+<section class="section">
+  <div class="conteneur py-72 deux-colonnes deux-colonnes--centre">
+    <div class="pile g-14">
+      <p class="surtitre">Depuis le 27 septembre 2008</p>
+      <h2 class="titre t-52">L'histoire du club</h2>
+      <p>Le club est né pour faire découvrir aux coureurs, cyclistes et nageurs du Pays de Brocéliande (ou aux trois à la fois !) le plaisir d'enchaîner ces disciplines, dans des contextes différents :</p>
+      <ul class="liste-puces">
+        <li><b>Triathlon classique</b> : natation, vélo de route, course à pied</li>
+        <li><b>Swimrun</b> : nage en mer et trail</li>
+        <li><b>Duathlon</b> : course à pied, vélo, course à pied</li>
+      </ul>
+      <p>En individuel ou en équipe. L'esprit du club, c'est d'abord la découverte d'un sport non élitiste, en plein air et à son rythme. Dans le triathlon, il y en a pour tous les goûts !</p>
+    </div>
+    <img class="image-pleine image-cadree ombre-rose" src="/assets/img/club_membres_2026.jpg" alt="Les membres du club réunis pour la photo de groupe 2026" eleventy:widths="600,1200" sizes="(min-width: 1304px) 556px, (min-width: 1000px) 45vw, 100vw">
+  </div>
+</section>
+
+{# Découvrir le triathlon #}
+<section class="section fond-noir texte-fond">
+  <div class="conteneur py-64 deux-colonnes deux-colonnes--32">
+    <div class="pile g-14">
+      <p class="surtitre surtitre--sombre">Découvrir le triathlon</p>
+      <h2 class="titre t-48">Trois sports, une seule course</h2>
+      <p class="texte-clair">Nager, pédaler, courir : le triathlon enchaîne ces trois épreuves sans s'arrêter, du format découverte à la longue distance. C'est un sport mixte, encadré en France par la Fédération Française de Triathlon.</p>
+      <div class="materiel pile g-8">
+        <h3 class="titre t-24 lh-texte texte-blanc">Quel matériel ?</h3>
+        <p class="texte-clair"><b class="texte-blanc">Pour débuter</b>, il suffit d'un maillot de bain, d'un vélo en bon état (freins compris), d'un casque et de chaussures de course.</p>
+        <p class="texte-clair"><b class="texte-blanc">Ensuite, chacun s'équipe à son rythme :</b></p>
+        <ul class="liste-puces texte-clair">
+          <li><b class="texte-blanc">La combinaison néoprène</b> garde au chaud et fait mieux flotter. Elle est obligatoire en eau froide et interdite en eau chaude, selon les seuils de la réglementation FFTRI.</li>
+          <li><b class="texte-blanc">La trifonction</b>, tenue emblématique du triathlète : une seule combinaison pour les trois épreuves. Elle sèche vite, elle est rembourrée pour le vélo et fait gagner du temps aux transitions.</li>
+          <li><b class="texte-blanc">Le vélo spécifique et les prolongateurs</b> donnent une position plus aérodynamique. Ils ne sont pas obligatoires.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chiffres-triathlon">
+      <dl>
+        {%- for chiffre in club.chiffresTriathlon %}
+        <div class="chiffre-filet chiffre-filet--{{ chiffre.couleur }}"><dt>{{ chiffre.libelle }}</dt><dd>{{ chiffre.valeur }}</dd></div>
+        {%- endfor %}
+      </dl>
+      <p class="chiffres-triathlon__sources">{{ club.sourcesChiffres }}</p>
+    </div>
+  </div>
+</section>
+
+{# Équipe #}
+<section class="section">
+  <div class="conteneur py-72 pile g-28">
+    <h2 class="titre t-52">L'équipe</h2>
+    <ul class="grille min-220 g-12">
+      {%- for membre in bureau.roles %}
+      <li class="fiche-role"><span class="fiche-role__role">{{ membre.role }}</span><b>{{ membre.nom }}</b></li>
+      {%- endfor %}
+    </ul>
+    <p><b>Membres du bureau :</b> {{ bureau.membres | join(", ") }}.</p>
+    <div class="appel-benevoles pile g-12">
+      <h3 class="titre t-32">L'équipe est ouverte à qui veut aider</h3>
+      <p class="texte-gris">Toutes les compétences et les nouvelles idées sont les bienvenues. Pour nous rejoindre, rapproche-toi d'un membre du bureau.</p>
+      <ul class="pastilles">
+        {%- for mission in bureau.missions %}
+        <li>{{ mission }}</li>
+        {%- endfor %}
+        <li class="pastilles__fin">Et bien d'autres…</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# Vers l'adhésion #}
+<section class="section fond-rose">
+  <div class="conteneur py-44 appel">
+    <div class="pile g-6 appel__texte">
+      <h2 class="titre t-44">Envie de nous rejoindre ?</h2>
+      <p>Tarifs de la saison, démarches et documents : tout est sur la page adhésion.</p>
+    </div>
+    {{ m.bouton("Nous rejoindre", "/nous-rejoindre/", "contour", "btn--grand") }}
+  </div>
+</section>
+
+{# Équipement #}
+<section class="section" id="equipement">
+  <div class="conteneur py-72 pile g-26">
+    <div class="section__tete section__tete--32">
+      <div class="section__titres">
+        <p class="surtitre">Équipement saison {{ tenues.saison }}</p>
+        <h2 class="titre t-52">Noir, orange et hermine</h2>
+      </div>
+      <p class="texte-gris mesure-46">Natation, vélo, course à pied, tenues de tous les jours et accessoires.</p>
+    </div>
+    {#- Tenues par discipline : une frise de losanges, alternativement en haut et en bas #}
+    <div class="tenues">
+      {%- for d in tenues.disciplines %}
+      <section class="tenues__discipline tenues__discipline--{{ d.couleur }}{% if d.groupes.length > 1 %} tenues__discipline--large{% endif %}" aria-labelledby="tenues-{{ loop.index }}">
+        <h3 class="tenues__titre" id="tenues-{{ loop.index }}">
+          {%- if d.pictos.length %}
+          <span class="tenues__pictos">
+            {%- for p in d.pictos %}<img src="/assets/img/{{ p }}" alt="" eleventy:widths="100">{% endfor -%}
+          </span>
+          {%- endif %}
+          {{ d.titre }}
+        </h3>
+        <div class="tenues__groupes">
+          {%- for g in d.groupes %}
+          <div class="tenues__groupe">
+            {%- if g.titre %}
+            <h4 class="tenues__sous-titre">{{ g.titre }}</h4>
+            {%- endif %}
+            <ul class="losanges" style="--n: {{ g.articles.length }}">
+              {%- for a in g.articles %}
+              <li class="losange" style="--i: {{ loop.index0 }}">
+                <span class="losange__forme"><span class="losange__image"><img src="/assets/img/{{ a.image }}" alt="" eleventy:widths="400"></span></span>
+                <span class="losange__nom">{{ a.nom }}</span>
+              </li>
+              {%- endfor %}
+            </ul>
+          </div>
+          {%- endfor %}
+        </div>
+      </section>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

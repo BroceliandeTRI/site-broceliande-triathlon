@@ -1,0 +1,43 @@
+{%- import "macros.njk" as m with context -%}
+<footer class="pied">
+  <div class="conteneur pied__contenu">
+    <div class="pied__colonnes">
+      <div class="pied__marque">
+        <img class="pied__logo" src="/assets/img/logo_bt_white.png" alt="Brocéliande Triathlon" eleventy:widths="276">
+        <p>{{ site.accroche }}</p>
+        <ul class="pied__reseaux">
+          {%- for reseau in reseaux %}
+          <li><a href="{{ reseau.url }}" aria-label="{{ reseau.libelle }}">{{ m.icone(reseau.id) }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- for colonne in navigation.pied %}
+      <div class="pied__colonne">
+        <h2 class="pied__titre">{{ colonne.titre }}</h2>
+        <ul>
+          {%- for lien in colonne.liens %}
+          <li><a href="{{ lien.url }}">{{ lien.texte }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endfor %}
+      <div class="pied__colonne">
+        <h2 class="pied__titre">Contact</h2>
+        <ul>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li>{{ site.adresse }}</li>
+          <li><a href="/contact/#formulaire">Formulaire de contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <img class="pied__motif" src="/assets/img/tranquilou_white.png" alt="">
+    <div class="pied__bas">
+      <ul>
+        {%- for lien in navigation.legal %}
+        <li><a href="{{ lien.url }}">{{ lien.texte }}</a></li>
+        {%- endfor %}
+      </ul>
+      <p>© {{ generation.annee }} {{ site.nom }}</p>
+    </div>
+  </div>
+</footer>

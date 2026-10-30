@@ -1,0 +1,55 @@
+---
+title: Partenaires
+description: "Nos partenaires sont essentiels à la vie du club : ils soutiennent nos adhérents et rendent possibles nos évènements. Merci à vous !"
+permalink: /partenaires/
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(surtitre="Nos partenaires", titre="Ils nous soutiennent toute l'année", deuxColonnes=true, classeTitre="t-68") %}
+  <p>Le sport rassemble les acteurs d'une même ville, d'une même commune, d'une même communauté. Nos partenaires sont essentiels à la vie du club : ils soutiennent nos adhérents et rendent possibles nos évènements. Leur aide prend toutes les formes, financière, matérielle, humaine ou organisationnelle, et chacune compte pour le BT.</p>
+  <p>Le Triathlon de Brocéliande en est le meilleur exemple : près de 700 athlètes réunis pour une journée de sport au bord du lac de Trémelin. À l'issue de l'évènement, le club devient partenaire à son tour en soutenant deux associations qui œuvrent contre les maladies infantiles.</p>
+  <p class="titre t-26 lh-texte texte-blanc">Merci à vous !</p>
+{% endcall %}
+
+{# Partenaires principaux #}
+<section class="section">
+  <div class="conteneur pt-64 pb-56 pile g-28">
+    <h2 class="titre t-44">Nos partenaires principaux</h2>
+    <div class="grille grille--remplir min-270 g-18">
+      {%- for partenaire in partenaires.principaux %}
+      {{ m.cartePartenaire(partenaire) }}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# Collectivités #}
+<section class="section fond-blanc">
+  <div class="conteneur py-56 pile g-22">
+    <h2 class="titre t-36">Avec le soutien des collectivités</h2>
+    <ul class="grille min-180 g-12 grille-collectivites">
+      {%- for c in collectivites %}
+      <li><a class="collectivite" href="{{ c.url }}"><img src="/assets/img/{{ c.logo }}" alt="{{ c.nom }}" eleventy:widths="400"></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{# Autres partenaires #}
+<section class="section">
+  <div class="conteneur py-56 pile g-16">
+    <h2 class="titre t-36">Merci à tous nos autres partenaires</h2>
+    <p class="texte-gris mesure-90">{{ partenaires.autres | join(", ") }}.</p>
+  </div>
+</section>
+
+{# Appel #}
+<section class="section fond-rose">
+  <div class="conteneur py-48 appel">
+    <div class="pile g-8 appel__texte">
+      <h2 class="titre t-44">Devenir partenaire du BT</h2>
+      <p>Sponsoring ou mécénat : découvrez comment soutenir le club et ce que nous construisons ensemble.</p>
+    </div>
+    {{ m.bouton("Devenir partenaire", "/partenaires/devenir-partenaire/", "contour", "btn--grand") }}
+  </div>
+</section>

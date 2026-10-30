@@ -1,0 +1,71 @@
+{#
+  Semaine type : une carte par jour, avec une pastille par séance (sport, horaire, lieu).
+  Données : src/_data/semaine.json. Sur mobile, seuls les jours avec séance sont affichés.
+#}
+{%- import "macros.njk" as m with context -%}
+{%- set pictos = { "natation": "picto_swim.png", "eau-libre": "picto_swim.png", "velo": "picto_bike.png", "course": "picto_run.png", "footing": "picto_run.png" } -%}
+<section class="section semaine" aria-labelledby="semaine-titre">
+  <div class="conteneur pt-24 pb-72 pile g-20">
+    <div class="section__tete section__tete--32">
+      <div class="section__titres g-8">
+        <p class="surtitre">Planning</p>
+        <h2 class="titre t-48" id="semaine-titre">La semaine type</h2>
+      </div>
+      <div class="bascule" role="group" aria-label="Choisir la période">
+        {%- for saison in semaine.saisons %}
+        <button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-saison="{{ saison.id }}">{{ saison.libelle }}</button>
+        {%- endfor %}
+      </div>
+    </div>
+
+    {%- for saison in semaine.saisons %}
+    <div class="semaine-visuelle" data-saison-panneau="{{ saison.id }}"{% if not loop.first %} hidden{% endif %}>
+      <h3 class="sr-only">Semaine type, {{ saison.libelle }}</h3>
+      <ol class="semaine-jours">
+        {%- for jour in semaine.jours %}
+        {%- set seances = saison.seances | filtrer("jour", jour) %}
+        <li class="jour-carte{% if not seances.length %} jour-carte--libre{% endif %}">
+          <h4 class="jour-carte__nom">{{ jour }}</h4>
+          {%- if seances.length %}
+          <ul class="jour-carte__seances">
+            {%- for s in seances %}
+            <li class="seance-badge seance-badge--{{ s.type }}{% if s.regroupement %} seance-badge--regroupement{% endif %}">
+              <img class="seance-badge__picto" src="/assets/img/{{ pictos[s.type] }}" alt="" eleventy:widths="100">
+              <span class="seance-badge__texte">
+                <b>{{ s.titre }}</b>
+                <span class="seance-badge__horaire">{{ s.debut | horaire }} – {{ s.fin | horaire }}</span>
+                {%- if s.lieu %}
+                <span class="seance-badge__lieu">{{ s.lieu }}</span>
+                {%- endif %}
+                {%- if s.regroupement %}
+                <span class="seance-badge__note">Selon le regroupement de chacun</span>
+                {%- endif %}
+                {%- if s.note %}
+                <span class="seance-badge__note">{{ s.note }}</span>
+                {%- endif %}
+              </span>
+            </li>
+            {%- endfor %}
+          </ul>
+          {%- else %}
+          <p class="jour-carte__libre">Pas de séance encadrée</p>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+    {%- endfor %}
+
+    <div class="bandeau-ppg">
+      <p><b class="bandeau-ppg__titre">+ PPG</b>Une fiche renforcement et une fiche mobilité chaque semaine, toute l’année, à faire seul ou à plusieurs.</p>
+      {#- Lien facultatif vers les fiches (texte et adresse dans semaine.json → fichesPPG) #}
+      {%- if semaine.fichesPPG.texte and semaine.fichesPPG.url %}
+      <a class="lien-fort lien-fort--clair lien-fort--orange lien-fort--petit" href="{{ semaine.fichesPPG.url }}">{{ semaine.fichesPPG.texte }}</a>
+      {%- endif %}
+    </div>
+
+    {%- for saison in semaine.saisons %}
+    <p class="semaine__note" data-saison-panneau="{{ saison.id }}"{% if not loop.first %} hidden{% endif %}>{{ saison.note }}</p>
+    {%- endfor %}
+  </div>
+</section>

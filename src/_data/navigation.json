@@ -1,0 +1,103 @@
+{
+  "principale": [
+    {
+      "texte": "Le club",
+      "url": "/le-club/"
+    },
+    {
+      "texte": "Entraînements",
+      "url": "/entrainements/"
+    },
+    {
+      "texte": "Vie du club",
+      "url": "/vie-du-club/"
+    },
+    {
+      "texte": "Nos évènements",
+      "url": "/evenements/"
+    },
+    {
+      "texte": "Partenaires",
+      "url": "/partenaires/"
+    },
+    {
+      "texte": "Contact",
+      "url": "/contact/"
+    }
+  ],
+  "adhesion": {
+    "texte": "Nous rejoindre",
+    "url": "/nous-rejoindre/"
+  },
+  "pied": [
+    {
+      "titre": "Le club",
+      "liens": [
+        {
+          "texte": "Histoire et équipe",
+          "url": "/le-club/"
+        },
+        {
+          "texte": "Entraînements",
+          "url": "/entrainements/"
+        },
+        {
+          "texte": "Nous rejoindre",
+          "url": "/nous-rejoindre/"
+        },
+        {
+          "texte": "Équipement",
+          "url": "/le-club/#equipement"
+        }
+      ]
+    },
+    {
+      "titre": "Le BT en action",
+      "liens": [
+        {
+          "texte": "Vie du club",
+          "url": "/vie-du-club/"
+        },
+        {
+          "texte": "Triathlon de Brocéliande",
+          "url": "/evenements/#triathlon"
+        },
+        {
+          "texte": "Biathlon running",
+          "url": "/evenements/#biathlon"
+        }
+      ]
+    },
+    {
+      "titre": "Partenaires",
+      "liens": [
+        {
+          "texte": "Nos partenaires",
+          "url": "/partenaires/"
+        },
+        {
+          "texte": "Devenir partenaire",
+          "url": "/partenaires/devenir-partenaire/"
+        }
+      ]
+    }
+  ],
+  "legal": [
+    {
+      "texte": "Mentions légales",
+      "url": "/mentions-legales/"
+    },
+    {
+      "texte": "Confidentialité et cookies",
+      "url": "/confidentialite/"
+    },
+    {
+      "texte": "FFTRI",
+      "url": "https://www.fftri.com/"
+    },
+    {
+      "texte": "Ligue de Bretagne",
+      "url": "https://www.liguetriathlon.bzh/"
+    }
+  ]
+}

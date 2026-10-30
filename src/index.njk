@@ -1,0 +1,143 @@
+---
+title: Accueil
+titreOnglet: "Brocéliande Triathlon · Club de triathlon du Pays de Brocéliande"
+description: "Club de triathlon du Pays de Brocéliande depuis 2008. Un club à l'esprit famille, construit autour de ses adhérents, du débutant curieux à l'athlète des formats longue distance."
+permalink: /
+contenusMeta: true
+---
+{%- import "macros.njk" as m with context -%}
+
+{# Ouverture : vidéo en boucle (image fixe si les animations sont réduites) #}
+<section class="ouverture">
+  <div class="ouverture__media">
+    <img class="ouverture__image" src="/assets/img/ouverture_poster.jpg" alt="Lever de soleil sur le lac de Trémelin : des éclairs roses jaillissent autour de l'épée plantée dans le rocher" loading="eager" fetchpriority="high" eleventy:widths="800,1280,1600" sizes="100vw">
+    <video class="ouverture__video" muted loop playsinline preload="none" aria-hidden="true" data-video data-webm="{{ '/assets/video/ouverture.webm' | avecPrefixe }}" data-mp4="{{ '/assets/video/ouverture.mp4' | avecPrefixe }}"></video>
+    <button class="ouverture__pause" type="button" hidden data-video-pause aria-label="Mettre l'animation en pause">
+      <span class="ouverture__pause-icone ouverture__pause-icone--pause">{{ m.icone("pause", 18) }}</span>
+      <span class="ouverture__pause-icone ouverture__pause-icone--lecture">{{ m.icone("lecture", 18) }}</span>
+    </button>
+  </div>
+  <div class="ouverture__contenu">
+    <div class="conteneur">
+      <div class="ouverture__carte">
+        <p class="surtitre surtitre--sombre">Club de triathlon de Montfort-sur-Meu · Pays de Brocéliande · depuis 2008</p>
+        <h1 class="titre t-hero">Entre dans la <span class="texte-orange">légende</span></h1>
+        <div class="boutons">
+          {{ m.bouton("Nous rejoindre", "/nous-rejoindre/", "orange", "btn--grand") }}
+          {{ m.bouton("Voir les entraînements", "/entrainements/", "contour", "btn--grand") }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Vitrine : la vidéo du Triathlon de Brocéliande 2026, juste sous l'ouverture #}
+{%- if evenements.triathlon.video %}
+<section class="section vitrine" aria-labelledby="vitrine-titre">
+  <div class="conteneur py-72 vitrine__grille">
+    <div class="pile g-16">
+      <p class="surtitre">Triathlon de Brocéliande · édition 2026</p>
+      <h2 class="titre t-56" id="vitrine-titre">Revivez la journée en vidéo</h2>
+      <p class="texte-gris">Quatre minutes au cœur de l'édition 2026, au bord du lac de Trémelin. Prochaine édition le dimanche 23 mai 2027.</p>
+      <div class="boutons boutons--10 boutons--centre">
+        {{ m.bouton("Le triathlon 2027", "/evenements/#triathlon", "orange") }}
+        {{ m.compteARebours(evenements.triathlon.depart) }}
+      </div>
+    </div>
+    {{ m.videoFacebook(evenements.triathlon.video) }}
+  </div>
+</section>
+{%- endif %}
+
+{# L'actu fraîche #}
+<section class="section fond-blanc">
+  <div class="conteneur section__pile py-80">
+    <div class="section__tete">
+      <div class="section__titres">
+        <p class="surtitre">Actualités</p>
+        <h2 class="titre t-56">L'actu fraîche du BT</h2>
+      </div>
+      <a class="lien-fort" href="/vie-du-club/">Toutes les actus</a>
+    </div>
+    <div class="grille-actus">
+      {%- for actu in actus %}
+      {{ m.carteActu(actu) }}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# Facebook #}
+<section class="section">
+  {{ m.blocFacebook("Le BT sur Facebook", "t-52", 6, "py-80", true) }}
+</section>
+
+{# Brief du club #}
+<section class="section fond-blanc">
+  <div class="conteneur py-80 accueil-club">
+    <figure class="figure-decalee">
+      <img class="figure-decalee__image ombre-orange" src="/assets/img/equipe2026.jpg" alt="L'équipe du club en tenue 2026, vélos à la main" style="object-position: 50% 70%" eleventy:widths="600,1080" sizes="(min-width: 1304px) 556px, (min-width: 1000px) 45vw, 100vw">
+      <figcaption class="figure-decalee__legende">Les BT, saison 2026</figcaption>
+    </figure>
+    <div class="accueil-club__texte">
+      <p class="surtitre">Le club</p>
+      <h2 class="titre t-60">Bienvenue au BT !</h2>
+      <p class="mesure-52">Un club à l'esprit famille, construit autour de ses adhérents, du débutant curieux à l'athlète des formats longue distance. Natation, vélo, course à pied : on s'entraîne ensemble, mais avant tout, on s'entraide.</p>
+      <dl class="chiffres">
+        {%- for chiffre in club.chiffresAccueil %}
+        <div><dt>{{ chiffre.libelle }}</dt><dd>{{ chiffre.valeur }}</dd></div>
+        {%- endfor %}
+      </dl>
+      <div class="boutons boutons--10">
+        {{ m.bouton("Découvrir le club", "/le-club/", "noir") }}
+        <a class="lien-fort lien-fort--orange" href="/entrainements/">Voir les entraînements</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Les deux évènements #}
+<section class="section fond-noir">
+  <div class="conteneur section__pile accueil-evenements">
+    <div class="section__tete">
+      <h2 class="titre t-56">Nos évènements</h2>
+      <a class="lien-fort lien-fort--clair lien-fort--orange" href="/evenements/">Tous les détails</a>
+    </div>
+    <div class="accueil-evenements__corps">
+    <div class="grille-evenements">
+      <article class="carte-evenement carte-evenement--rose">
+        <div class="carte-evenement__texte">
+          <p class="carte-evenement__surtitre">{{ evenements.triathlon.surtitreAccueil }}</p>
+          <h3 class="titre t-48">{{ evenements.triathlon.nom }}</h3>
+          <p class="texte-600">{{ evenements.triathlon.resumeAccueil }}</p>
+          <div class="boutons boutons--10 boutons--centre">
+            {{ m.bouton("Page de l'évènement", "/evenements/#triathlon", "noir") }}
+            {{ m.compteARebours(evenements.triathlon.depart) }}
+          </div>
+        </div>
+        <figure class="carte-evenement__figure">
+          <img class="carte-evenement__affiche carte-evenement__affiche--gauche" src="/assets/img/{{ evenements.triathlon.affiche.image }}" alt="{{ evenements.triathlon.affiche.alt }}" eleventy:widths="300">
+          <figcaption class="carte-evenement__legende">{{ evenements.triathlon.affiche.legende }}</figcaption>
+        </figure>
+      </article>
+      <article class="carte-evenement carte-evenement--sombre">
+        <div class="carte-evenement__texte">
+          <p class="carte-evenement__surtitre texte-orange">{{ evenements.biathlon.surtitreAccueil }}</p>
+          <h3 class="titre t-48">{{ evenements.biathlon.nom }}</h3>
+          <p class="texte-clair">{{ evenements.biathlon.resumeAccueil }}</p>
+          {{ m.bouton("Infos et inscription", "/evenements/#biathlon", "orange", "aligne-debut") }}
+        </div>
+        <figure class="carte-evenement__figure">
+          <img class="carte-evenement__affiche carte-evenement__affiche--droite" src="/assets/img/{{ evenements.biathlon.affiche.image }}" alt="{{ evenements.biathlon.affiche.altAccueil }}" eleventy:widths="300">
+          <figcaption class="carte-evenement__legende">{{ evenements.biathlon.affiche.legende }}</figcaption>
+        </figure>
+      </article>
+    </div>
+    {#- Agenda chronologique, vertical (les rendez-vous marqués "accueil": false n'y figurent pas) #}
+    <div class="accueil-agenda">
+      <h3 class="titre t-32">Agenda</h3>
+      {{ m.friseAgenda(agenda | exclure("accueil", false)) }}
+    </div>
+    </div>
+  </div>
+</section>

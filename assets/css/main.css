@@ -1,0 +1,1589 @@
+/* ==========================================================================
+   Brocéliande Triathlon : feuille de styles du site
+   Les couleurs, polices et largeurs sont des variables (section 2).
+   ========================================================================== */
+
+/* ---------- 1. Polices auto-hébergées (aucun appel à Google Fonts) ---------- */
+@font-face { font-family: "Anton"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/anton-400.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/barlow-400.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/barlow-500.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/barlow-600.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/barlow-700.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/barlow-800.woff2") format("woff2"); }
+
+/* ---------- 2. Variables ---------- */
+:root {
+  /* Couleurs de la charte */
+  --noir: #141213;            /* fonds, titres */
+  --noir-pied: #0b0a0a;       /* pied de page */
+  --orange: #ff891c;          /* tenues, actions (texte noir dessus) */
+  --orange-survol: #ffa04a;
+  --rose: #dd116a;            /* hermine du logo, évènements (texte blanc dessus) */
+  --rose-fonce: #b80d57;      /* petits textes roses sur fond clair */
+  --fond: #f7f5f3;            /* fond clair */
+  --blanc: #ffffff;
+  --gris-texte: #4f494b;
+  --gris-discret: #6b6466;
+  --gris-clair: #d9d3d0;      /* texte clair sur fond noir */
+  --bordure: #e4dedb;
+
+  /* Nuances complémentaires reprises de la maquette */
+  --noir-carte: #221f20;
+  --bordure-sombre: #3a3437;
+  --filet-sombre: #332e30;
+  --pied-filet: #2a2527;
+  --gris-pied: #aba3a5;
+  --filet: #ece6e3;
+  --filet-grille: #f1ece9;
+  --orange-clair: #ffb067;
+  --orange-pale: #ffd3a8;
+  --creme: #fff1e3;
+  --creme-bordure: #f2c9a0;
+  --champ-bordure: #8f8789;
+
+  /* Polices */
+  --police-titre: "Anton", Impact, "Arial Narrow", sans-serif;
+  --police-texte: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Largeurs */
+  --conteneur: 1240px;
+  --conteneur-en-tete: 1360px;
+  --marge: 32px;
+  --hauteur-barre: 84px;
+}
+
+/* ---------- 3. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  background: var(--fond);
+  color: var(--noir);
+  font-family: var(--police-texte);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+h1, h2, h3, h4, p, figure, dl, dd, blockquote { margin: 0; }
+h1, h2, h3, h4 { font-weight: inherit; font-size: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, video, svg { display: block; max-width: 100%; }
+img { height: auto; }
+picture { display: contents; }
+picture > source { display: none; }
+a { color: inherit; }
+b, strong { font-weight: 700; }
+button, input, select, textarea { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
+main:focus { outline: none; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lien-evitement {
+  position: absolute;
+  left: 16px;
+  top: -200px;
+  z-index: 100;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--noir);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  text-decoration: none;
+}
+.lien-evitement:focus { top: 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ---------- 4. Mise en page et utilitaires ---------- */
+.conteneur {
+  width: 100%;
+  max-width: calc(var(--conteneur) + 2 * var(--marge));
+  margin-inline: auto;
+  padding-inline: var(--marge);
+}
+
+.fond-blanc { background: var(--blanc); }
+.fond-noir { background: var(--noir); color: var(--blanc); }
+.fond-noir.texte-fond { color: var(--fond); }
+.fond-rose { background: var(--rose); color: var(--blanc); }
+
+/* Espacements verticaux des sections (valeurs de la maquette) */
+.py-80 { padding-block: 80px; }
+.py-72 { padding-block: 72px; }
+.py-64 { padding-block: 64px; }
+.py-56 { padding-block: 56px; }
+.py-48 { padding-block: 48px; }
+.py-44 { padding-block: 44px; }
+.pt-64 { padding-top: 64px; }
+.pt-56 { padding-top: 56px; }
+.pt-24 { padding-top: 24px; }
+.pb-72 { padding-bottom: 72px; }
+.pb-64 { padding-bottom: 64px; }
+.pb-56 { padding-bottom: 56px; }
+.pb-48 { padding-bottom: 48px; }
+.pb-40 { padding-bottom: 40px; }
+.mt-4 { margin-top: 4px; }
+.mt-12 { margin-top: 12px; }
+
+/* Piles verticales et grilles */
+.pile { display: flex; flex-direction: column; min-width: 0; }
+.g-4 { gap: 4px; } .g-6 { gap: 6px; } .g-8 { gap: 8px; } .g-10 { gap: 10px; }
+.g-12 { gap: 12px; } .g-14 { gap: 14px; } .g-16 { gap: 16px; } .g-18 { gap: 18px; }
+.g-20 { gap: 20px; } .g-22 { gap: 22px; } .g-24 { gap: 24px; } .g-26 { gap: 26px; }
+.g-28 { gap: 28px; } .g-30 { gap: 30px; } .g-32 { gap: 32px; }
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 300px)), 1fr));
+}
+.grille--remplir { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 300px)), 1fr)); }
+.min-150 { --min: 150px; } .min-180 { --min: 180px; } .min-200 { --min: 200px; }
+.min-220 { --min: 220px; } .min-250 { --min: 250px; } .min-260 { --min: 260px; }
+.min-270 { --min: 270px; } .min-280 { --min: 280px; } .min-300 { --min: 300px; }
+.min-340 { --min: 340px; } .min-440 { --min: 440px; }
+
+.deux-colonnes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 40px 64px;
+}
+.deux-colonnes--centre { align-items: center; }
+.deux-colonnes--32 { gap: 32px 64px; }
+.deux-colonnes--24 { gap: 24px; }
+.deux-colonnes--contact { gap: 32px 56px; align-items: start; }
+
+.section__tete {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 14px 40px;
+}
+.section__tete--32 { gap: 12px 32px; }
+.section__titres { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.section__pile { display: flex; flex-direction: column; gap: 32px; }
+
+/* ---------- 5. Typographie ---------- */
+.titre {
+  font-family: var(--police-titre);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.t-hero { font-size: clamp(52px, 6.2vw, 86px); line-height: .98; text-wrap: balance; }
+.t-72 { font-size: 72px; }
+.t-68 { font-size: 68px; text-wrap: balance; }
+.t-64 { font-size: 64px; }
+.t-60 { font-size: 60px; }
+.t-56 { font-size: 56px; }
+.t-52 { font-size: 52px; }
+.t-48 { font-size: 48px; }
+.t-44 { font-size: 44px; }
+.t-40 { font-size: 40px; }
+.t-36 { font-size: 36px; }
+.t-32 { font-size: 32px; }
+.t-28 { font-size: 28px; }
+.t-26 { font-size: 26px; line-height: 1.05; }
+.t-24 { font-size: 24px; }
+.t-22 { font-size: 22px; }
+.lh-texte { line-height: 1.55; }
+
+.surtitre {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--rose-fonce);
+}
+.surtitre--sombre { color: var(--orange); }
+
+.texte-orange { color: var(--orange); }
+.texte-gris { color: var(--gris-texte); }
+.texte-clair { color: var(--gris-clair); }
+.texte-blanc { color: var(--blanc); }
+.texte-600 { font-weight: 600; }
+.petit { font-size: 15px; }
+.mesure-46 { max-width: 46ch; }
+.mesure-52 { max-width: 52ch; }
+.mesure-60 { max-width: 60ch; }
+.mesure-62 { max-width: 62ch; }
+.mesure-64 { max-width: 64ch; }
+.mesure-90 { max-width: 90ch; }
+
+.insecable { white-space: nowrap; }
+.liste-puces { list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+
+.lien-texte { color: var(--noir); font-weight: 700; }
+.lien-texte:hover { color: var(--rose-fonce); }
+.lien-discret { text-decoration: none; }
+.lien-discret:hover { text-decoration: underline; }
+
+/* Lien fort : capitales soulignées d'un trait de couleur */
+.lien-fort {
+  color: var(--noir);
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  text-decoration: none;
+  border-bottom: 3px solid var(--rose);
+  padding-bottom: 2px;
+}
+a.lien-fort:hover { color: var(--rose-fonce); }
+.lien-fort--orange { border-bottom-color: var(--orange); }
+.lien-fort--clair { color: var(--blanc); }
+a.lien-fort--clair:hover { color: var(--orange); }
+.lien-fort--petit { font-size: 14px; padding-bottom: 0; }
+.lien-fort--casse { text-transform: none; letter-spacing: 0; padding-bottom: 0; }
+
+/* ---------- 6. Boutons pilule ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 18px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--police-texte);
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.btn--grand { min-height: 50px; padding: 11px 20px; font-size: 16px; }
+.btn--petit { min-height: 44px; padding: 8px 14px; font-size: 14px; }
+.btn--en-tete { min-height: 44px; padding: 0 20px; }
+
+.btn-orange { background: var(--orange); color: var(--noir); }
+a.btn-orange:hover, button.btn-orange:hover { background: var(--orange-survol); }
+
+.btn-noir { background: var(--noir); color: var(--blanc); }
+a.btn-noir:hover, button.btn-noir:hover { background: #000; }
+
+.btn-contour { background: transparent; border-color: currentColor; color: var(--blanc); }
+.fond-noir .btn-contour { color: var(--fond); }
+a.btn-contour:hover { background: var(--blanc); border-color: var(--blanc); color: var(--noir); }
+/* Contour sombre, pour les fonds clairs */
+.btn-contour-noir { background: transparent; border-color: var(--noir); color: var(--noir); }
+a.btn-contour-noir:hover { background: var(--noir); color: var(--blanc); }
+
+.est-inactif { cursor: default; }
+/* Information à la place d'un bouton sans lien (par exemple « Inscriptions en février 2027 ») */
+.btn-info { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 800; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+
+.boutons { display: flex; flex-wrap: wrap; gap: 12px; }
+.boutons--10 { gap: 10px; }
+.boutons--centre { align-items: center; }
+.boutons > .lien-fort { align-self: center; }
+.aligne-debut { align-self: flex-start; }
+
+/* ---------- 7. En-tête (option B : médaillon débordant) ---------- */
+.en-tete {
+  position: relative;
+  z-index: 20;
+  background: var(--noir);
+  color: var(--blanc);
+  border-bottom: 4px solid var(--rose);
+}
+.en-tete__barre {
+  position: relative;
+  max-width: calc(var(--conteneur-en-tete) + 2 * var(--marge));
+  height: var(--hauteur-barre);
+  margin: 0 auto;
+  padding: 0 var(--marge);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.medaillon {
+  position: absolute;
+  z-index: 2;
+  left: var(--marge);
+  top: 6px;
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  background: var(--noir);
+  box-shadow: 0 0 0 4px var(--rose), 0 12px 28px rgba(0, 0, 0, .35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.medaillon::before {
+  content: "";
+  position: absolute;
+  inset: 11px;
+  border: 2px solid var(--blanc);
+  border-radius: 50%;
+}
+.medaillon img { position: relative; width: 138px; margin-left: 8px; }
+
+.menu { flex: 1; display: flex; align-items: center; gap: 24px; margin-left: 216px; min-width: 0; }
+.menu__nav ul {
+  display: flex;
+  gap: 22px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.menu__nav a {
+  display: block;
+  padding: 6px 0 4px;
+  border-bottom: 3px solid transparent;
+  color: var(--blanc);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.menu__nav a:hover { color: var(--orange); }
+.menu__nav a[aria-current] { border-bottom-color: var(--rose); }
+
+.menu__actions { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.menu__reseaux { display: flex; gap: 6px; }
+.menu__reseaux a {
+  width: 42px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanc);
+}
+.menu__reseaux a:hover { color: var(--orange); }
+.menu__adhesion { margin-left: 10px; white-space: nowrap; }
+.menu__adhesion[aria-current="page"] { box-shadow: 0 0 0 3px var(--blanc); }
+
+.burger { display: none; }
+.en-tete__rejoindre { display: none; }
+
+/* Entre 1100 et 1399 px, la barre complète ne tient pas sur une ligne :
+   les icônes des réseaux restent dans le pied de page et le menu se resserre */
+@media (max-width: 1399px) and (min-width: 1100px) {
+  .menu__reseaux { display: none; }
+}
+@media (max-width: 1249px) and (min-width: 1100px) {
+  .menu__nav ul { gap: 16px; font-size: 13px; letter-spacing: .06em; }
+  .menu__adhesion { padding: 0 16px; font-size: 14px; }
+}
+
+/* Sous 1100 px : menu burger */
+@media (max-width: 1099px) {
+  :root { --hauteur-barre: 76px; }
+  .en-tete__barre { justify-content: flex-end; }
+  .medaillon { width: 120px; height: 120px; }
+  .medaillon::before { inset: 7px; }
+  .medaillon img { width: 86px; margin-left: 5px; }
+
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px 0 14px;
+    border: 2px solid var(--blanc);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--blanc);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .burger:hover { border-color: var(--orange); color: var(--orange); }
+  .en-tete__rejoindre { display: inline-flex; min-height: 44px; margin-right: 10px; padding: 0 16px; font-size: 14px; }
+  .en-tete__rejoindre[aria-current="page"] { box-shadow: 0 0 0 3px var(--blanc); }
+}
+/* Petits téléphones : le bouton du menu n'affiche que son icône, pour laisser la place à « Rejoindre » */
+@media (max-width: 430px) {
+  .burger { gap: 0; padding: 0 12px; }
+  .burger__texte { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .en-tete__rejoindre { margin-right: 8px; padding: 0 14px; }
+}
+@media (max-width: 1099px) {
+  .burger__icone--fermer { display: none; }
+  .burger[aria-expanded="true"] .burger__icone--ouvrir { display: none; }
+  .burger[aria-expanded="true"] .burger__icone--fermer { display: block; }
+
+  .menu {
+    position: fixed;
+    z-index: 1;
+    top: calc(var(--hauteur-barre) + 4px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 72px var(--marge) 40px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 32px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--noir);
+  }
+  .js .menu { display: none; }
+  .js .en-tete.menu-ouvert .menu { display: flex; }
+
+  .menu__nav ul { flex-direction: column; gap: 0; font-size: 20px; }
+  .menu__nav li { border-bottom: 1px solid var(--filet-sombre); }
+  .menu__nav a { display: inline-block; padding: 14px 0 10px; }
+  .menu__actions { margin: 0; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .menu__reseaux { gap: 8px; }
+  .menu__reseaux a { width: 44px; height: 44px; border-radius: 50%; background: var(--pied-filet); }
+  .menu__reseaux li:first-child a { background: var(--rose); }
+  .menu__reseaux a:hover { background: var(--orange); color: var(--noir); }
+  .menu__adhesion { margin: 0; }
+
+  /* Sans JavaScript : le menu s'affiche sous la barre */
+  .no-js .en-tete__barre { height: auto; min-height: var(--hauteur-barre); flex-wrap: wrap; padding-top: 140px; }
+  .no-js .burger { display: none; }
+  .no-js .menu { position: static; padding: 0 0 24px; }
+}
+
+@media (max-width: 759px) {
+  :root { --marge: 20px; --hauteur-barre: 64px; }
+  .medaillon {
+    width: 96px;
+    height: 96px;
+    box-shadow: 0 0 0 3px var(--rose), 0 8px 20px rgba(0, 0, 0, .35);
+  }
+  .medaillon::before { inset: 6px; }
+  .medaillon img { width: 68px; margin-left: 4px; }
+  .menu { padding-top: 56px; }
+  .no-js .en-tete__barre { padding-top: 112px; }
+}
+
+html.menu-ouvert-page { overflow: hidden; }
+
+/* ---------- 8. Bandeau des pages intérieures ---------- */
+.bandeau { position: relative; overflow: hidden; background: var(--noir); color: var(--blanc); }
+.bandeau__motif {
+  position: absolute;
+  right: -40px;
+  bottom: 18px;
+  width: auto;
+  height: 120px;
+  max-width: none;
+  opacity: .12;
+}
+.bandeau__contenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 140px;
+  padding-bottom: 50px;
+}
+.bandeau--colonnes .bandeau__contenu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 24px 64px;
+  align-items: end;
+  padding-bottom: 52px;
+}
+.bandeau__titres { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.bandeau__texte { display: flex; flex-direction: column; gap: 12px; min-width: 0; color: var(--gris-clair); }
+.bandeau__chapeau { max-width: 60ch; color: var(--gris-clair); }
+.bandeau__retour {
+  align-self: flex-start;
+  color: var(--gris-pied);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.bandeau__retour:hover { color: var(--orange); }
+
+@media (max-width: 1099px) { .bandeau__contenu { padding-top: 92px; } }
+@media (max-width: 759px) { .bandeau__contenu { padding-top: 72px; padding-bottom: 40px; } }
+
+/* ---------- 9. Pied de page ---------- */
+.pied { background: var(--noir-pied); color: var(--gris-clair); font-size: 15px; line-height: 1.55; }
+.pied__contenu { display: flex; flex-direction: column; gap: 34px; padding-top: 60px; padding-bottom: 26px; }
+.pied__colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 32px; }
+.pied__marque { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pied__logo { width: auto; height: 62px; align-self: flex-start; }
+.pied__reseaux { display: flex; gap: 8px; }
+.pied__reseaux a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pied-filet);
+  color: var(--blanc);
+}
+.pied__reseaux li:first-child a { background: var(--rose); }
+.pied .pied__reseaux a:hover { background: var(--orange); color: var(--noir); }
+.pied__colonne { display: flex; flex-direction: column; gap: 8px; }
+.pied__colonne ul { display: flex; flex-direction: column; gap: 8px; }
+.pied__titre { font-family: var(--police-titre); font-size: 20px; text-transform: uppercase; color: var(--blanc); }
+.pied a { color: var(--gris-clair); text-decoration: none; }
+.pied a:hover { color: var(--orange); }
+.pied__motif { width: auto; height: 42px; align-self: center; opacity: .35; }
+.pied__bas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--pied-filet);
+  font-size: 13px;
+  color: var(--gris-pied);
+}
+.pied__bas ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.pied .pied__bas a { color: var(--gris-pied); }
+.pied .pied__bas a:hover { color: var(--orange); }
+
+/* ---------- 10. Accueil ---------- */
+.ouverture { position: relative; background: var(--noir); color: var(--blanc); }
+.ouverture__media { position: relative; height: 620px; overflow: hidden; }
+.ouverture__image,
+.ouverture__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+.ouverture__video { opacity: 0; transition: opacity .3s ease; }
+.ouverture__video.est-en-lecture { opacity: 1; }
+.ouverture__pause {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: max(var(--marge), calc((100% - var(--conteneur)) / 2));
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 18, 19, .72);
+  color: var(--blanc);
+  cursor: pointer;
+}
+.ouverture__pause:hover { background: var(--orange); border-color: var(--orange); color: var(--noir); }
+.ouverture__pause-icone--lecture { display: none; }
+.ouverture__pause[data-etat="pause"] .ouverture__pause-icone--pause { display: none; }
+.ouverture__pause[data-etat="pause"] .ouverture__pause-icone--lecture { display: block; }
+
+.ouverture__contenu { position: absolute; left: 0; right: 0; bottom: 0; }
+.ouverture__carte {
+  max-width: 620px;
+  padding: 32px 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--noir);
+}
+
+/* Cartes d'actualité */
+.grille-actus { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px; }
+.carte-actu { display: flex; flex-direction: column; gap: 12px; min-width: 0; color: var(--noir); text-decoration: none; }
+.carte-actu__visuel { position: relative; display: block; }
+.carte-actu__image { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.etiquette {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 4px 10px;
+  background: var(--noir);
+  color: var(--blanc);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.etiquette--rose { background: var(--rose); }
+
+/* Crédit d'une photo de presse, en bas à droite de l'image */
+.credit-photo {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  max-width: calc(100% - 16px);
+  padding: 2px 6px;
+  background: rgba(20, 18, 19, .8);
+  color: var(--blanc);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.carte-actu .credit-photo { top: 8px; bottom: auto; }
+.carte-actu__infos { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gris-discret); }
+.carte-actu__titre { font-family: var(--police-titre); font-size: 25px; line-height: 1.1; text-transform: uppercase; }
+.carte-actu:hover .carte-actu__titre { color: var(--rose-fonce); }
+
+/* Facebook : vignettes, puis fil en direct après accord du visiteur */
+.bloc-facebook { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+.bloc-facebook__intro { flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.bloc-facebook__icone {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--noir);
+  color: var(--blanc);
+}
+.grille-publications { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.grille-publications--facebook { grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); }
+.integration { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.integration--facebook { flex: 2 1 560px; }
+/* Carrousel des publications intégrées : une publication à la fois, défilement par flèches ou balayage */
+.carrousel { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.carrousel::-webkit-scrollbar { display: none; }
+.carrousel__diapo { flex: 0 0 100%; min-width: 0; display: flex; justify-content: center; scroll-snap-align: start; }
+.carrousel__diapo .fb-post { width: 100%; max-width: 560px; }
+.carrousel__diapo .fb-post > span, .carrousel__diapo iframe { max-width: 100%; }
+.carrousel__diapo .instagram-media { margin: 0 !important; }
+.carrousel__commandes { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; }
+.carrousel__bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--noir);
+  border-radius: 50%;
+  background: var(--blanc);
+  color: var(--noir);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.carrousel__bouton:hover:not(:disabled) { background: var(--noir); color: var(--blanc); }
+.carrousel__bouton:disabled { opacity: .35; cursor: default; }
+.carrousel__position { min-width: 150px; text-align: center; font-size: 14px; font-weight: 700; color: var(--gris-texte); }
+
+/* Vidéo Facebook en vitrine */
+.video-fb { display: flex; flex-direction: column; gap: 10px; min-width: 0; margin: 0; }
+.video-fb__ecran { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.video-fb__facade { position: absolute; inset: 0; display: block; color: var(--blanc); text-decoration: none; }
+.video-fb__facade::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 18, 19, 0) 45%, rgba(20, 18, 19, .75)); }
+.video-fb__image { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.video-fb__facade:hover .video-fb__image { transform: scale(1.03); }
+.video-fb__lecture {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  padding-left: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--noir);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+  transform: translate(-50%, -50%);
+  transition: transform .2s ease;
+}
+.video-fb__facade:hover .video-fb__lecture { transform: translate(-50%, -50%) scale(1.08); }
+.video-fb__libelle { position: absolute; z-index: 1; left: 20px; bottom: 16px; font-weight: 800; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
+.video-fb__duree { color: var(--orange); }
+.video-fb__lecteur { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-fb__note { font-size: 13px; color: var(--gris-texte); }
+.fond-noir .video-fb__note { color: var(--gris-clair); }
+.fond-noir .video-fb__note a, .fond-rose .video-fb__note, .fond-rose .video-fb__note a { color: var(--blanc); }
+.evenement__video { max-width: 900px; }
+@media (prefers-reduced-motion: reduce) {
+  .video-fb__image, .video-fb__lecture { transition: none; }
+}
+
+/* Accueil : la vidéo du triathlon en vitrine, sous l'ouverture (fond clair, liseré rose et orange) */
+.vitrine { position: relative; background: var(--fond); }
+.vitrine::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--rose), var(--orange)); }
+.vitrine__grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 32px 56px; align-items: center; }
+@media (max-width: 999px) {
+  .vitrine__grille { grid-template-columns: minmax(0, 1fr); }
+}
+.integration__accord {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 14px 16px;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-left: 5px solid var(--rose);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.fond-blanc .integration__accord { background: var(--fond); }
+.integration__accord p { flex: 1 1 280px; color: var(--gris-texte); }
+.integration__accord b { display: block; color: var(--noir); }
+.no-js .integration__accord { display: none; }
+.integration__cadre iframe { display: block; max-width: 100%; border: 0; background: var(--blanc); }
+.lien-bouton {
+  min-height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gris-texte);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.lien-bouton:hover { color: var(--rose-fonce); }
+.publication { display: flex; flex-direction: column; background: var(--blanc); color: var(--noir); text-decoration: none; }
+.publication:hover { box-shadow: 0 0 0 3px var(--rose); }
+.publication__image { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.publication__image--entiere { object-fit: contain; background: var(--blanc); }
+.publication__texte { padding: 10px 12px; font-size: 14px; line-height: 1.35; }
+.publication__date { display: block; font-weight: 700; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--gris-discret); }
+
+/* Brief du club */
+.accueil-club { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px 64px; align-items: center; }
+.accueil-club__texte { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.figure-decalee { position: relative; min-width: 0; }
+.figure-decalee__image { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.figure-decalee__legende {
+  position: absolute;
+  left: -12px;
+  bottom: -16px;
+  padding: 11px 16px;
+  background: var(--rose);
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 22px;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+}
+.ombre-orange { box-shadow: 14px 14px 0 var(--orange); }
+.ombre-rose { box-shadow: 14px 14px 0 var(--rose); }
+.image-pleine { width: 100%; }
+
+.chiffres { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; padding-top: 18px; border-top: 2px solid var(--noir); }
+.chiffres > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
+.chiffres dd { font-family: var(--police-titre); font-size: 44px; line-height: 1; }
+.chiffres dt { font-weight: 600; font-size: 15px; }
+
+/* Évènements (accueil) */
+.accueil-evenements { padding-top: 72px; padding-bottom: 80px; gap: 30px; }
+.accueil-evenements .section__tete { gap: 12px 32px; }
+.grille-evenements { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 20px; }
+.carte-evenement {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 24px;
+  align-items: start;
+  min-width: 0;
+  padding: 32px;
+}
+.carte-evenement--rose { background: var(--rose); color: var(--blanc); }
+.carte-evenement--sombre { background: var(--noir-carte); border: 1px solid var(--bordure-sombre); }
+.carte-evenement__texte { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.carte-evenement__surtitre { font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+.carte-evenement__affiche { width: 150px; box-shadow: 0 0 0 4px var(--blanc); }
+.carte-evenement__affiche--gauche { transform: rotate(-3deg); }
+.carte-evenement__affiche--droite { transform: rotate(3deg); }
+.carte-evenement__figure { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 0; }
+.carte-evenement__legende { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.carte-evenement--sombre .carte-evenement__legende { color: var(--gris-clair); }
+
+.compte {
+  display: inline-block;
+  padding: 11px 12px;
+  background: var(--noir);
+  color: var(--orange);
+  font-family: var(--police-titre);
+  font-size: 26px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.compte--grand { padding: 7px 12px; font-size: 28px; }
+
+/* ---------- 11. Le club ---------- */
+.materiel { padding-top: 14px; border-top: 1px solid var(--filet-sombre); }
+.chiffres-triathlon { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.chiffres-triathlon dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.chiffre-filet { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding-top: 10px; border-top: 3px solid var(--orange); }
+.chiffre-filet--rose { border-top-color: var(--rose); }
+.chiffre-filet dd { font-family: var(--police-titre); font-size: 40px; line-height: 1; }
+.chiffre-filet dt { font-weight: 600; font-size: 15px; color: var(--gris-clair); }
+.chiffres-triathlon__sources { font-size: 13px; color: var(--gris-pied); }
+
+.fiche-role { display: flex; flex-direction: column; padding: 16px 18px; background: var(--blanc); border-left: 5px solid var(--noir); }
+.fiche-role__role { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--rose-fonce); }
+
+.appel-benevoles { padding: 28px; background: var(--creme); }
+.pastilles { display: flex; flex-wrap: wrap; gap: 8px; }
+.pastilles li { padding: 6px 12px; background: var(--blanc); border: 1px solid var(--creme-bordure); font-weight: 600; font-size: 15px; }
+.pastilles .pastilles__fin { background: var(--noir); border-color: var(--noir); color: var(--blanc); }
+
+.appel { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px 40px; }
+.appel__texte { max-width: 640px; }
+
+/* Équipement : une frise de losanges par discipline (3 par ligne, les disciplines à plusieurs groupes en pleine largeur) */
+.tenues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 32px; }
+@media (max-width: 699px) {
+  .tenues { grid-template-columns: minmax(0, 1fr); }
+}
+.tenues__discipline { --accent: var(--noir); --accent-fond: var(--noir); container-type: inline-size; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tenues__discipline--large { grid-column: 1 / -1; }
+.tenues__discipline--rose { --accent: var(--rose-fonce); --accent-fond: var(--rose); }
+.tenues__discipline--orange { --accent: #b85400; --accent-fond: var(--orange); }
+.tenues__discipline--gris { --accent: var(--gris-texte); --accent-fond: var(--gris-discret); }
+.tenues__discipline--triathlon { --accent: var(--rose-fonce); --accent-fond: linear-gradient(90deg, var(--rose), var(--orange)); }
+.tenues__titre {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
+  font-family: var(--police-titre);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.tenues__titre::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--accent-fond); }
+.tenues__pictos { display: inline-flex; gap: 6px; }
+.tenues__pictos img { width: auto; height: 24px; }
+.tenues__groupes { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 8px 48px; }
+.tenues__groupe { display: flex; flex-direction: column; align-items: center; padding-top: 14px; }
+.tenues__sous-titre { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+
+.losanges {
+  --g: 14px;      /* écart entre deux losanges voisins */
+  --lib: 50px;    /* place réservée aux noms, au-dessus et au-dessous */
+  /* Taille d'un losange : 180 px au plus, moins si la frise ne tient pas dans la largeur disponible */
+  --d-max: 180px;
+  --d: min(var(--d-max), calc((100cqi - (var(--n) + 1) * var(--g)) / ((var(--n) - 1) / 2 + 1)));
+  --pas: calc(var(--d) / 2 + var(--g));
+  position: relative;
+  width: calc((var(--n) - 1) * var(--pas) + var(--d));
+  height: calc(var(--d) * 1.5 + var(--lib) * 2);
+}
+/* Le fil de la frise, qui passe entre les losanges du haut et ceux du bas */
+.losanges::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--g) * -1);
+  right: calc(var(--g) * -1);
+  top: calc(var(--lib) + var(--d) * .75 - 1px);
+  height: 2px;
+  background: var(--accent-fond);
+  opacity: .45;
+}
+.losange { position: absolute; top: var(--lib); left: calc(var(--i) * var(--pas)); width: var(--d); height: var(--d); }
+.losange:nth-child(even) { top: calc(var(--lib) + var(--d) / 2); }
+.losange__forme { position: absolute; inset: 0; background: var(--accent-fond); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+/* Visuels préparés par npm run tenues : l'article tient entier dans le losange */
+.losange__image { position: absolute; inset: 5px; overflow: hidden; background: var(--blanc); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.losange__image img { width: 100%; height: 100%; object-fit: cover; }
+.losange__nom {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  width: calc(var(--pas) * 2 - 10px);
+  transform: translateX(-50%);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+.losange:nth-child(even) .losange__nom { top: calc(100% + 6px); bottom: auto; }
+@container (max-width: 380px) {
+  .losanges { --d-max: 130px; --g: 10px; --lib: 58px; }
+  .losange__nom { font-size: 13px; }
+}
+
+/* ---------- 12. Nous rejoindre ---------- */
+.tarif { display: flex; flex-direction: column; gap: 6px; padding: 24px; background: var(--noir); color: var(--blanc); }
+.tarif__prix { font-family: var(--police-titre); font-size: 52px; line-height: 1; color: var(--orange); }
+.tarif__formule { font-weight: 700; font-size: 19px; }
+.tarif__detail { font-size: 15px; color: var(--gris-clair); }
+
+.etape { display: flex; flex-direction: column; gap: 8px; padding: 22px; background: var(--blanc); border-top: 4px solid var(--orange); }
+.etape--rose { border-top-color: var(--rose); }
+.etape__numero { font-family: var(--police-titre); font-size: 44px; line-height: 1; color: var(--rose-fonce); }
+.etape__titre { font-weight: 700; font-size: 19px; }
+.etape__texte { font-size: 16px; color: var(--gris-texte); }
+
+.document {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 18px;
+  border: 2px solid var(--bordure);
+  color: var(--noir);
+  text-decoration: none;
+}
+a.document:hover { border-color: var(--rose); }
+.document__icone { flex: none; color: var(--rose-fonce); }
+.document__titre { display: block; }
+.document__detail { display: block; font-size: 14px; color: var(--gris-discret); }
+
+/* ---------- 13. Entraînements ---------- */
+.discipline { display: flex; flex-direction: column; gap: 12px; padding: 24px; background: var(--blanc); border-top: 6px solid var(--noir); }
+.discipline--orange { border-top-color: var(--orange); }
+.discipline--rose { border-top-color: var(--rose); }
+.discipline--gris { border-top-color: var(--gris-discret); }
+.discipline__picto { width: auto; height: 40px; align-self: flex-start; }
+.discipline__picto--icone { color: var(--noir); }
+.discipline__nom { font-size: 30px; line-height: 1.55; }
+.discipline__horaires { width: 100%; border-collapse: collapse; font-size: 16px; font-variant-numeric: tabular-nums; }
+.discipline__horaires th,
+.discipline__horaires td { padding: 0 0 6px; border-bottom: 1px solid var(--filet); vertical-align: top; }
+.discipline__horaires tr + tr th,
+.discipline__horaires tr + tr td { padding-top: 6px; }
+.discipline__horaires th { width: 1%; font-weight: 700; text-align: left; white-space: nowrap; padding-right: 10px; }
+.discipline__horaires td { text-align: right; }
+.discipline__texte { font-size: 15px; color: var(--gris-texte); }
+
+/* Semaine type */
+.bascule { display: flex; flex-wrap: wrap; gap: 8px; }
+.bascule button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 2px solid var(--noir);
+  border-radius: 999px;
+  background: var(--blanc);
+  color: var(--noir);
+  font-family: var(--police-texte);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.bascule button[aria-pressed="true"] { background: var(--noir); color: var(--blanc); }
+.bascule button:hover { border-color: var(--rose); }
+.no-js .bascule { display: none; }
+.no-js .semaine [data-saison-panneau][hidden] { display: block !important; }
+
+.bandeau-ppg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
+  padding: 18px 22px;
+  background: var(--noir);
+  color: var(--fond);
+}
+.bandeau-ppg__titre { margin-right: 10px; font-family: var(--police-titre); font-weight: 400; font-size: 22px; text-transform: uppercase; }
+.semaine__note { font-size: 15px; color: var(--gris-texte); }
+
+.lieu { display: flex; flex-direction: column; gap: 4px; padding: 6px 16px; border-left: 5px solid var(--noir); }
+.lieu span { font-size: 15px; color: var(--gris-texte); }
+.lieu--rose { border-left-color: var(--rose); }
+.lieu--orange { border-left-color: var(--orange); }
+.lieu--compact { gap: 0; padding: 2px 14px; }
+
+/* Entraînements : horaires de baignade publique d'Océlia, dans une fenêtre */
+.horaires-piscine {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px 20px;
+  padding: 20px 24px;
+  background: var(--fond);
+  border-left: 5px solid var(--noir);
+}
+.horaires-piscine__icone { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--noir); color: var(--blanc); }
+.horaires-piscine p { color: var(--gris-texte); }
+.horaires-piscine p b { color: var(--noir); }
+@media (max-width: 759px) {
+  .horaires-piscine { grid-template-columns: auto minmax(0, 1fr); }
+  .horaires-piscine .boutons { grid-column: 1 / -1; }
+}
+
+.dialogue {
+  width: min(960px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 0;
+  background: var(--blanc);
+  color: var(--noir);
+  overscroll-behavior: contain;
+}
+.dialogue::backdrop { background: rgba(20, 18, 19, .82); }
+.dialogue__contenu { display: flex; flex-direction: column; gap: 14px; padding: 20px; }
+.dialogue__tete { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.dialogue__titre { font-family: var(--police-titre); font-weight: 400; font-size: 26px; line-height: 1.05; text-transform: uppercase; }
+.dialogue__fermer {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--noir);
+  color: var(--blanc);
+  cursor: pointer;
+}
+.dialogue__fermer:hover { background: var(--rose); }
+.dialogue img { width: 100%; height: auto; }
+.dialogue__note { font-size: 15px; color: var(--gris-texte); }
+
+/* ---------- 14. Vie du club ---------- */
+.carte-presse {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--blanc);
+  border-top: 5px solid var(--noir);
+  color: var(--noir);
+  text-decoration: none;
+}
+.carte-presse__visuel { position: relative; display: block; }
+.carte-presse__image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.carte-presse__corps { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; }
+.carte-presse--rose { border-top-color: var(--rose); }
+.carte-presse--orange { border-top-color: var(--orange); }
+.carte-presse__infos {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gris-discret);
+}
+.carte-presse__titre { font-family: var(--police-titre); font-size: 23px; line-height: 1.1; text-transform: uppercase; }
+.carte-presse:hover .carte-presse__titre { color: var(--rose-fonce); }
+.carte-presse__lire { margin-top: auto; font-size: 14px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+
+.grille-vignettes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 8px; }
+.vignette { display: block; background: var(--blanc); }
+.vignette:hover { box-shadow: 0 0 0 3px var(--rose); }
+.vignette__image { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.vignette__image--entiere { object-fit: contain; }
+
+/* ---------- 15. Nos évènements ---------- */
+.evenement { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: start; }
+.evenement__texte { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.evenement__entete { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+
+.rappel { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; color: var(--fond); }
+.rappel--rose { background: rgba(20, 18, 19, .92); }
+.rappel--sombre { background: var(--noir-carte); border: 1px solid var(--bordure-sombre); }
+.rappel__liste { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; font-variant-numeric: tabular-nums; }
+.rappel__liste b { display: block; color: var(--orange); }
+.rappel__liste span { font-size: 15px; }
+.rappel__source { font-size: 13px; color: var(--gris-pied); }
+
+.affiche { display: flex; flex-direction: column; gap: 8px; }
+.affiche img { width: 100%; box-shadow: 0 0 0 6px var(--blanc); }
+.affiche figcaption { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.affiche--sombre figcaption { color: var(--gris-clair); }
+
+.resultat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  background: var(--blanc);
+  border: 2px solid var(--noir);
+  color: var(--noir);
+  text-decoration: none;
+}
+.resultat__annee { font-family: var(--police-titre); font-size: 44px; line-height: 1; }
+.resultat__edition { font-weight: 700; font-size: 15px; color: var(--gris-texte); }
+.resultat__lien { margin-top: 6px; font-weight: 800; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+.resultat:hover { background: var(--noir); color: var(--blanc); }
+.resultat:hover .resultat__edition { color: var(--blanc); }
+
+/* ---------- 16. Partenaires ---------- */
+.partenaire { display: flex; flex-direction: column; min-width: 0; background: var(--blanc); border: 1px solid var(--bordure); }
+.partenaire__logo {
+  height: 140px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--filet);
+}
+.partenaire__logo img { max-height: 100%; width: auto; object-fit: contain; }
+.partenaire__sans-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--police-titre);
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+}
+.partenaire__sans-logo span {
+  font-family: var(--police-texte);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--gris-discret);
+}
+.partenaire__corps { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 24px; }
+.partenaire__nom { font-size: 26px; line-height: 1.05; }
+.partenaire__activite { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--rose-fonce); }
+.partenaire__description { font-size: 16px; color: var(--gris-texte); }
+.partenaire__lien {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 8px;
+  border-bottom: 3px solid var(--orange);
+  color: var(--noir);
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+}
+.partenaire__lien:hover { color: var(--rose-fonce); }
+
+.collectivite {
+  height: 110px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--filet);
+}
+.collectivite:hover { border-color: var(--rose); }
+.collectivite img { max-height: 100%; width: auto; object-fit: contain; }
+
+/* ---------- 17. Devenir partenaire ---------- */
+.atout { display: flex; flex-direction: column; gap: 10px; padding: 22px; background: var(--blanc); border-top: 6px solid var(--noir); }
+.atout p { font-size: 16px; color: var(--gris-texte); }
+.atout--orange { border-top-color: var(--orange); }
+.atout--rose { border-top-color: var(--rose); }
+.atout--gris { border-top-color: var(--gris-discret); }
+
+.formule { display: flex; flex-direction: column; gap: 14px; padding: 32px; }
+.formule--noir { background: var(--noir); color: var(--fond); }
+.formule--rose { background: var(--rose); color: var(--blanc); }
+
+.etape-ligne { display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 3px solid var(--noir); }
+.etape-ligne__numero { font-family: var(--police-titre); font-size: 48px; line-height: 1; color: var(--rose-fonce); }
+.etape-ligne__titre { font-weight: 700; font-size: 20px; }
+
+.encart-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 32px;
+  padding: 28px 32px;
+  background: var(--noir);
+  color: var(--fond);
+}
+
+/* ---------- 18. Contact ---------- */
+.formulaire { display: flex; flex-direction: column; gap: 16px; min-width: 0; padding: 32px; background: var(--blanc); }
+.champ { display: flex; flex-direction: column; gap: 6px; }
+.champ label { font-weight: 700; font-size: 15px; }
+.champ input,
+.champ select,
+.champ textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 1px solid var(--champ-bordure);
+  border-radius: 10px;
+  background: var(--blanc);
+}
+.champ textarea { resize: vertical; }
+.champ-piege { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.formulaire__mention { font-size: 13px; color: var(--gris-discret); }
+.formulaire__obligatoire { font-size: 14px; color: var(--gris-texte); }
+
+.pilules { display: flex; flex-wrap: wrap; gap: 8px; }
+.pilules a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 2px solid var(--noir);
+  border-radius: 999px;
+  color: var(--noir);
+  font-weight: 700;
+  text-decoration: none;
+}
+.pilules a:hover { color: var(--rose-fonce); }
+
+/* ---------- 19. Pages légales ---------- */
+.texte-legal { display: flex; flex-direction: column; gap: 16px; max-width: 760px; }
+.texte-legal h2:not(:first-child) { margin-top: 24px; }
+.texte-legal dl { display: flex; flex-direction: column; gap: 8px; }
+.texte-legal dl > div { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 4px 16px; padding: 10px 0; border-bottom: 1px solid var(--bordure); }
+.texte-legal dt { font-weight: 700; }
+.texte-legal dd { color: var(--gris-texte); }
+
+/* ---------- 21. Ajouts : planning visuel, pense-bête, frise, presse, réseaux, accord Meta ---------- */
+
+/* Le club : photo de groupe recadrée */
+.image-cadree { aspect-ratio: 930 / 535; object-fit: cover; object-position: 50% 62%; }
+
+/* Nous rejoindre : information mise en avant */
+.essai {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding: 24px 28px;
+  background: var(--orange);
+  color: var(--noir);
+}
+.essai__texte { display: flex; flex-direction: column; gap: 4px; max-width: 62ch; }
+.essai__titre { font-family: var(--police-titre); font-weight: 400; font-size: 30px; line-height: 1.05; text-transform: uppercase; }
+
+.pastille-info {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--creme);
+  border: 1px solid var(--creme-bordure);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Entraînements : semaine type en cartes jour par jour */
+.semaine-jours { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.jour-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 14px 10px 16px;
+  background: var(--blanc);
+  border-top: 4px solid var(--noir);
+}
+.jour-carte__nom { font-family: var(--police-titre); font-size: 22px; line-height: 1; text-transform: uppercase; }
+.jour-carte--libre { background: transparent; border: 1px dashed var(--bordure); border-top: 4px solid var(--bordure); }
+.jour-carte--libre .jour-carte__nom { color: var(--gris-discret); }
+.jour-carte__libre { font-size: 14px; line-height: 1.3; color: var(--gris-discret); }
+.jour-carte__seances { display: flex; flex-direction: column; gap: 8px; }
+.seance-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--noir);
+  color: var(--blanc);
+}
+.seance-badge__picto { width: auto; height: 26px; align-self: flex-start; filter: invert(1); }
+.seance-badge__texte { display: flex; flex-direction: column; line-height: 1.25; }
+.seance-badge b { font-size: 15px; letter-spacing: .03em; text-transform: uppercase; }
+.seance-badge__horaire { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+.seance-badge__lieu,
+.seance-badge__note { font-size: 13px; }
+.seance-badge__note { font-weight: 700; }
+.seance-badge--velo { background: var(--orange); color: var(--noir); }
+.seance-badge--course { background: var(--rose); }
+.seance-badge--eau-libre { background: var(--blanc); color: var(--noir); border: 2px solid var(--noir); }
+.seance-badge--footing { background: var(--blanc); color: var(--rose-fonce); border: 2px solid var(--rose); }
+.seance-badge--velo .seance-badge__picto,
+.seance-badge--eau-libre .seance-badge__picto,
+.seance-badge--footing .seance-badge__picto { filter: none; }
+.seance-badge--velo.seance-badge--regroupement { background: repeating-linear-gradient(135deg, var(--orange) 0 10px, var(--orange-clair) 10px 20px); }
+.seance-badge--course.seance-badge--regroupement { background: repeating-linear-gradient(135deg, var(--rose) 0 10px, var(--rose-fonce) 10px 20px); }
+@media (max-width: 1099px) {
+  .semaine-jours { grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); }
+  .jour-carte--libre { display: none; }
+}
+
+/* Nous rejoindre : pense-bête du triathlète */
+.pense-bete__etapes { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.pense-bete__etapes::before {
+  content: "";
+  position: absolute;
+  top: 31px;
+  left: 32px;
+  right: 10%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--orange));
+}
+.pense-bete__etape { position: relative; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.pense-bete__icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--noir);
+  border: 3px solid var(--rose);
+  color: var(--blanc);
+}
+.pense-bete__etape--orange .pense-bete__icone { border-color: var(--orange); }
+.pense-bete__etape--noir .pense-bete__icone { border-color: var(--blanc); }
+.pense-bete__icone img { width: auto; height: 28px; filter: invert(1); }
+.pense-bete__titre { font-family: var(--police-titre); font-size: 22px; line-height: 1.1; text-transform: uppercase; }
+.pense-bete__elements { display: flex; flex-wrap: wrap; gap: 6px; }
+.pense-bete__elements li {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--noir-carte);
+  border: 1px solid var(--bordure-sombre);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--gris-clair);
+}
+@media (max-width: 1099px) {
+  .pense-bete__etapes { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  .pense-bete__etapes::before { display: none; }
+}
+
+/* Nos évènements : parcours */
+.parcours { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; background: rgba(20, 18, 19, .92); color: var(--fond); }
+.parcours__liste { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.parcours__liste b { display: block; color: var(--orange); }
+.parcours__liens { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 15px; }
+.parcours__liens a { color: var(--blanc); font-weight: 700; }
+.parcours__liens a:hover { color: var(--orange); }
+
+/* Contact : réseaux avec leurs logos */
+.pilules a { gap: 8px; }
+
+/* Accueil : les deux évènements à gauche, l'agenda vertical à droite sur toute leur hauteur */
+.accueil-evenements__corps { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); gap: 28px 48px; }
+.accueil-evenements__corps .grille-evenements { grid-template-columns: minmax(0, 1fr); }
+.accueil-agenda { display: flex; flex-direction: column; gap: 24px; padding-left: 40px; border-left: 1px solid var(--bordure-sombre); }
+/* Largeur limitée : la frise de l'accueil reste verticale à toutes les tailles d'écran */
+.accueil-agenda .frise-zone { flex: 1; display: flex; flex-direction: column; max-width: 520px; }
+.accueil-agenda .frise { flex: 1; }
+.accueil-agenda .frise__etapes { flex: 1; align-content: space-between; gap: 34px; }
+@media (max-width: 999px) {
+  .accueil-evenements__corps { grid-template-columns: minmax(0, 1fr); }
+  .accueil-agenda { padding: 32px 0 0; border-left: 0; border-top: 1px solid var(--bordure-sombre); }
+}
+
+/* Frise de l'agenda (Vie du club et accueil) */
+.frise-zone { container-type: inline-size; }
+.frise { --avancement: 0%; display: flex; flex-direction: column; }
+.frise__piste { position: relative; height: 6px; margin-top: 30px; border-radius: 3px; background: var(--filet-sombre); }
+.frise__avancement {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--avancement);
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--orange));
+}
+.frise__aujourdhui {
+  position: absolute;
+  bottom: 14px;
+  left: clamp(48px, var(--avancement), calc(100% - 48px));
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--orange);
+}
+.frise__etapes { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); margin-top: -13px; }
+.frise__etape { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 10px; text-align: center; }
+.frise__point { width: 20px; height: 20px; margin-bottom: 8px; border-radius: 50%; background: var(--noir); border: 4px solid var(--rose); }
+.frise__etape--orange .frise__point { border-color: var(--orange); }
+.frise__etape--noir .frise__point { border-color: var(--blanc); }
+.frise__date { font-family: var(--police-titre); font-size: 26px; line-height: 1; text-transform: uppercase; color: var(--blanc); }
+.frise__titre { font-size: 17px; color: var(--blanc); }
+.frise__lieu { font-size: 14px; color: var(--gris-clair); }
+.frise__etape.est-passe { opacity: .55; }
+.frise__etape.est-passe .frise__point { background: var(--orange); border-color: var(--orange); }
+/* Espace étroit (téléphone, colonne de l'accueil) : la frise devient verticale, le remplissage descend jusqu'à aujourd'hui */
+@container (max-width: 699px) {
+  .frise { position: relative; }
+  .frise__piste { position: absolute; top: 12px; bottom: 0; left: 8px; width: 4px; height: auto; margin: 0; }
+  .frise__avancement { inset: 0 0 auto 0; width: auto; height: var(--avancement); background: linear-gradient(180deg, var(--rose), var(--orange)); }
+  .frise__aujourdhui { display: none; }
+  .frise__etapes { grid-auto-flow: row; margin-top: 0; gap: 22px; }
+  .frise__etape { position: relative; align-items: flex-start; text-align: left; padding: 0 0 0 36px; }
+  .frise__point { position: absolute; left: 0; top: 2px; margin: 0; }
+  .frise__etape:first-child:not(.est-passe)::before,
+  .frise__etape.est-passe + .frise__etape:not(.est-passe)::before {
+    content: "Prochain rendez-vous";
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+}
+
+/* Vie du club : revue de presse, article à la une */
+.presse { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.carte-presse--une { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+.carte-presse--une .carte-presse__image { height: 100%; }
+.carte-presse--une .carte-presse__corps { justify-content: center; gap: 14px; padding: 28px 32px; }
+.carte-presse--une .carte-presse__titre { font-size: 34px; }
+@media (max-width: 999px) {
+  .presse { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .carte-presse--une { grid-template-columns: 1fr; }
+  .carte-presse--une .carte-presse__titre { font-size: 28px; }
+}
+@media (max-width: 599px) { .presse { grid-template-columns: 1fr; } }
+
+/* Vie du club : Facebook et Instagram côte à côte */
+.reseaux-direct { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px; align-items: start; }
+.reseaux-direct__colonne { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.reseaux-direct .grille-publications--facebook,
+.reseaux-direct .grille-vignettes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* Vie du club : suivre les BT, avec les logos des réseaux */
+.suivre { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px; }
+.suivre__carte {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  padding: 20px;
+  background: var(--noir-carte);
+  border: 1px solid var(--bordure-sombre);
+  color: var(--blanc);
+  text-decoration: none;
+}
+.suivre__carte:hover { border-color: var(--orange); }
+.suivre__logo {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanc);
+}
+.suivre__carte--instagram .suivre__logo { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.suivre__carte--facebook .suivre__logo { background: #1877f2; }
+.suivre__carte--youtube .suivre__logo { background: #ff0000; }
+.suivre__carte--strava .suivre__logo { background: #fc4c02; }
+.suivre__texte { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 14px; color: var(--gris-clair); }
+.suivre__texte b { font-size: 19px; color: var(--blanc); }
+.suivre__pseudo { font-weight: 700; color: var(--orange); overflow-wrap: anywhere; }
+
+/* Accord unique pour les contenus de Meta */
+.bandeau-meta {
+  position: fixed;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 var(--marge) calc(16px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+.bandeau-meta__contenu {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 18px 22px;
+  background: var(--noir);
+  border-top: 4px solid var(--rose);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, .25);
+  color: var(--gris-clair);
+  font-size: 15px;
+  line-height: 1.45;
+  pointer-events: auto;
+}
+.bandeau-meta__contenu p { flex: 1 1 380px; }
+.bandeau-meta b { display: block; font-size: 17px; color: var(--blanc); }
+.bandeau-meta a { color: var(--blanc); font-weight: 700; }
+.bandeau-meta__boutons { display: flex; gap: 10px; }
+.bandeau-meta__court { display: none; }
+@media (max-width: 759px) {
+  .bandeau-meta { padding: 0 10px calc(10px + env(safe-area-inset-bottom, 0px)); }
+  .bandeau-meta__contenu { gap: 10px; padding: 12px 14px; font-size: 14px; }
+  .bandeau-meta__contenu p { flex-basis: 100%; }
+  .bandeau-meta b { font-size: 15px; }
+  .bandeau-meta__long { display: none; }
+  .bandeau-meta__court { display: inline; }
+  .bandeau-meta__boutons { width: 100%; }
+  .bandeau-meta__boutons .btn { flex: 1; }
+}
+
+/* ---------- 20. Écrans moyens et petits ---------- */
+@media (max-width: 999px) {
+  .evenement { grid-template-columns: 1fr; }
+  .affiche { max-width: 300px; }
+}
+
+@media (max-width: 759px) {
+  body { font-size: 17px; }
+
+  .py-80 { padding-block: 56px; }
+  .py-72 { padding-block: 52px; }
+  .py-64, .pt-64.pb-72 { padding-block: 48px; }
+  .py-56 { padding-block: 44px; }
+  .pt-64 { padding-top: 48px; }
+  .pt-56 { padding-top: 44px; }
+  .pb-72 { padding-bottom: 52px; }
+  .pb-64 { padding-bottom: 48px; }
+  .accueil-evenements { padding-top: 52px; padding-bottom: 56px; }
+
+  .t-hero, .t-72, .t-68 { font-size: 46px; }
+  .t-64, .t-60, .t-56, .t-52, .t-48 { font-size: 38px; }
+  .t-44, .t-40 { font-size: 34px; }
+  .t-36, .t-32 { font-size: 30px; }
+  .titre { overflow-wrap: break-word; }
+
+  .ouverture__media { height: 320px; }
+  .ouverture__contenu { position: static; }
+  .ouverture__carte { padding: 24px 0 36px; }
+  .ouverture__pause { top: auto; bottom: 14px; }
+
+  .grille-publications,
+  .grille-publications--facebook { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grille-vignettes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grille-collectivites { --min: 140px; }
+
+  .affiche { max-width: 240px; }
+  .carte-evenement { grid-template-columns: 1fr; padding: 24px; }
+  .carte-evenement__affiche { width: 140px; margin: 4px 0 6px 8px; }
+
+  .formulaire, .appel-benevoles { padding: 22px; }
+  .formule { padding: 24px; }
+  .encart-contact { padding: 24px; }
+  .texte-legal dl > div { grid-template-columns: 1fr; }
+}

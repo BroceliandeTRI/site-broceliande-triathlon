@@ -1,0 +1,95 @@
+---
+title: Nous rejoindre
+description: "Adhésions 2026 – 2027 au Brocéliande Triathlon. Débutant ou confirmé, jeune ou adulte : choisis ta formule, fais ta demande de licence en ligne, et viens t'entraîner avec les BT."
+permalink: /nous-rejoindre/
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(surtitre="Adhésions 2026 – 2027", titre="Nous rejoindre") %}
+  <p class="bandeau__chapeau">Débutant ou confirmé, jeune ou adulte : choisis ta formule, fais ta demande de licence en ligne, et viens t'entraîner avec les BT.</p>
+{% endcall %}
+
+{# Tarifs #}
+<section class="section">
+  <div class="conteneur pt-64 pb-40 pile g-22">
+    <h2 class="titre t-44">Les formules</h2>
+    <ul class="grille min-250 g-14">
+      {%- for tarif in tarifs %}
+      <li class="tarif">
+        <span class="tarif__prix">{{ tarif.prix }}</span>
+        <h3 class="tarif__formule">{{ tarif.formule }}</h3>
+        <span class="tarif__detail">{{ tarif.detail }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{# Séance d'essai #}
+<section class="section">
+  <div class="conteneur pt-24">
+    <div class="essai">
+      <div class="essai__texte">
+        <h2 class="essai__titre">Séance d'essai gratuite</h2>
+        <p>Envie de tester avant de t'inscrire ? Une séance d'essai gratuite est possible, sur demande.</p>
+      </div>
+      {{ m.bouton("Demander une séance d'essai", "/contact/", "noir") }}
+    </div>
+  </div>
+</section>
+
+{# Démarches #}
+<section class="section">
+  <div class="conteneur pt-24 pb-64 pile g-22">
+    <div class="section__tete section__tete--32">
+      <h2 class="titre t-44">Comment s'inscrire</h2>
+      <p class="pastille-info">Clôture des inscriptions : le 31 octobre de chaque année</p>
+    </div>
+    <ol class="grille min-300 g-16">
+      <li class="etape etape--orange">
+        <span class="etape__numero" aria-hidden="true">1</span>
+        <h3 class="etape__titre">Demande de licence en ligne</h3>
+        <p class="etape__texte">Sur l'Espace Tri de la FFTRI : renseigne tes coordonnées, ajoute une photo et précise le club Brocéliande Triathlon.</p>
+        <a class="lien-fort lien-fort--orange lien-fort--casse aligne-debut" href="https://espacetri.fftri.com/">espacetri.fftri.com</a>
+      </li>
+      <li class="etape etape--orange">
+        <span class="etape__numero" aria-hidden="true">2</span>
+        <h3 class="etape__titre">Bulletin et charte</h3>
+        <p class="etape__texte">Remplis le bulletin d'inscription de la saison. Les nouveaux adhérents signent aussi la charte du club.</p>
+      </li>
+      <li class="etape etape--rose">
+        <span class="etape__numero" aria-hidden="true">3</span>
+        <h3 class="etape__titre">Contacte le club</h3>
+        <p class="etape__texte">Les inscriptions sont possibles jusqu'au 31 octobre de chaque année. Écris-nous pour finaliser ton dossier ou demander une séance d'essai gratuite.</p>
+        {{ m.bouton("Contacter le club", "/contact/", "noir", "btn--petit aligne-debut mt-4") }}
+      </li>
+    </ol>
+  </div>
+</section>
+
+{# Documents #}
+<section class="section fond-blanc">
+  <div class="conteneur pt-56 pb-64 pile g-20">
+    <h2 class="titre t-40">Documents</h2>
+    <ul class="grille min-280 g-12">
+      {%- for doc in documents %}
+      <li>
+        {%- if doc.fichier %}
+        <a class="document" href="/assets/docs/{{ doc.fichier }}">
+        {%- else %}
+        <span class="document est-inactif">
+        {%- endif %}
+          <span class="document__icone">{{ m.icone("document", 26) }}</span>
+          <span><b class="document__titre">{{ doc.titre }}</b><span class="document__detail">{{ doc.detail }}</span></span>
+        {%- if doc.fichier %}
+        </a>
+        {%- else %}
+        </span>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{{ m.penseBete() }}

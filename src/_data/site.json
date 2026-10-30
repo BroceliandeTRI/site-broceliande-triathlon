@@ -1,0 +1,16 @@
+{
+  "nom": "Brocéliande Triathlon",
+  "url": "https://www.broceliandetri.org",
+  "accroche": "Site officiel du club de triathlon du Pays de Brocéliande.",
+  "email": "broceliandetriathlon@gmail.com",
+  "adresse": "COSEC, Montfort-sur-Meu",
+  "formulaire": {
+    "action": "mailto:broceliandetriathlon@gmail.com",
+    "methode": "post",
+    "encodage": "text/plain"
+  },
+  "imagePartage": "/assets/img/partage-lac.jpg",
+  "imagePartageAlt": "Le lac de Trémelin au lever du soleil, l'épée plantée dans le rocher",
+  "filFacebook": true,
+  "integrationInstagram": true
+}

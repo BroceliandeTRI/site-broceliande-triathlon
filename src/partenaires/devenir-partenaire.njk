@@ -1,0 +1,88 @@
+---
+title: Devenir partenaire
+description: "Partenaire toute l'année ou d'un de nos évènements : vous soutenez un club du Pays de Brocéliande et vous gagnez en visibilité auprès d'une communauté sportive de proximité."
+permalink: /partenaires/devenir-partenaire/
+---
+{%- import "macros.njk" as m with context -%}
+
+{% call m.bandeau(titre="Devenir partenaire du BT", retour={ url: "/partenaires/", texte: "Nos partenaires" }) %}
+  <p class="bandeau__chapeau mesure-62">Partenaire toute l'année ou d'un de nos évènements : vous soutenez un club du Pays de Brocéliande et vous gagnez en visibilité auprès d'une communauté sportive de proximité.</p>
+{% endcall %}
+
+{# Pourquoi #}
+<section class="section">
+  <div class="conteneur pt-64 pb-48 pile g-26">
+    <h2 class="titre t-44">Pourquoi nous soutenir</h2>
+    <div class="grille min-260 g-16">
+      <div class="atout atout--orange">
+        <h3 class="titre t-26">Sur nos tenues</h3>
+        <p>Votre logo accompagne nos athlètes sur chaque compétition, toute la saison.</p>
+      </div>
+      <div class="atout atout--rose">
+        <h3 class="titre t-26">Dans nos communications</h3>
+        <p>Les photos et vidéos des exploits de nos athlètes circulent sur le site et les réseaux du club.</p>
+      </div>
+      <div class="atout atout--noir">
+        <h3 class="titre t-26">Sur nos évènements</h3>
+        <p>Le Triathlon de Brocéliande réunit près de 700 athlètes au lac de Trémelin, sans compter le public et les bénévoles.</p>
+      </div>
+      <div class="atout atout--gris">
+        <h3 class="titre t-26">Un engagement solidaire</h3>
+        <p>Après le triathlon, le club soutient deux associations qui œuvrent contre les maladies infantiles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Deux façons #}
+<section class="section fond-blanc">
+  <div class="conteneur py-64 pile g-26">
+    <h2 class="titre t-44">Deux façons de nous rejoindre</h2>
+    <div class="grille min-440 g-20">
+      <article class="formule formule--noir">
+        <p class="carte-evenement__surtitre texte-orange">Avec contreparties</p>
+        <h3 class="titre t-40">Le sponsoring</h3>
+        <p class="texte-clair">Une action à but commercial : en échange de votre soutien, le club vous offre de la visibilité sur ses tenues, dans ses communications et lors de ses évènements.</p>
+        <p class="texte-clair">Les dépenses de sponsoring sont déductibles du résultat imposable de l'entreprise.</p>
+      </article>
+      <article class="formule formule--rose">
+        <p class="carte-evenement__surtitre">Sans contrepartie</p>
+        <h3 class="titre t-40">Le mécénat</h3>
+        <p>Un don financier ou matériel. Vous choisissez d'apparaître sur nos supports de communication ou de rester anonyme.</p>
+        <p>Le don peut ouvrir droit à une réduction d'impôt pour l'entreprise, selon l'éligibilité de l'association.</p>
+      </article>
+    </div>
+    <p class="texte-gris petit">Les règles fiscales sont détaillées sur <a class="lien-texte" href="https://entreprendre.service-public.gouv.fr/vosdroits/F22263">service-public.fr</a>. Votre expert-comptable vous confirmera ce qui s'applique à votre entreprise.</p>
+  </div>
+</section>
+
+{# Comment ça se passe #}
+<section class="section">
+  <div class="conteneur pt-64 pb-72 pile g-26">
+    <h2 class="titre t-44">Comment ça se passe</h2>
+    <ol class="grille min-300 g-20">
+      <li class="etape-ligne">
+        <span class="etape-ligne__numero" aria-hidden="true">1</span>
+        <h3 class="etape-ligne__titre">Vous nous contactez</h3>
+        <p class="texte-gris">Par e-mail ou avec le formulaire de contact, sujet « Partenariat ».</p>
+      </li>
+      <li class="etape-ligne">
+        <span class="etape-ligne__numero" aria-hidden="true">2</span>
+        <h3 class="etape-ligne__titre">On construit ensemble</h3>
+        <p class="texte-gris">Type de soutien, durée, évènement visé et visibilité souhaitée : on en parle avec un membre du bureau.</p>
+      </li>
+      <li class="etape-ligne">
+        <span class="etape-ligne__numero" aria-hidden="true">3</span>
+        <h3 class="etape-ligne__titre">Bienvenue chez les BT</h3>
+        <p class="texte-gris">Votre fiche apparaît sur la page partenaires, avec votre logo, votre description et un lien vers votre site.</p>
+      </li>
+    </ol>
+    <div class="encart-contact">
+      <div class="pile g-4">
+        <h3 class="titre t-28 lh-texte">Parlons de votre projet</h3>
+        <a class="texte-clair lien-discret" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
+      {{ m.bouton("Nous contacter", "/contact/", "orange", "btn--grand") }}
+    </div>
+  </div>
+</section>

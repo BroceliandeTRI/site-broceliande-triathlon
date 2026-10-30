@@ -1,0 +1,60 @@
+{
+  "facebook": [
+    {
+      "image": "fb_redek-de-vern-2026.jpg",
+      "alt": "Une athlète du club, bouquet de fleurs à la main, après le 10 km du Redek de Vern",
+      "date": "Octobre 2026",
+      "legende": "Redek de vern - BDS 10 km. Eryn : 54’09, record personnel et 1ere Junior…",
+      "url": "https://www.facebook.com/broceliandetri/posts/pfbid02o2chYpWqHv13q4qGvy8bwQ4wud5yr24sRuQ2wmpXbCeDF8zSAyvAMJ2G7n6QX1mol",
+      "cadrage": "50% 25%",
+      "entiere": false
+    }
+  ],
+  "instagram": [
+    {
+      "image": "insta_C84xO--sJEw.jpg",
+      "alt": "Podium féminin sous la tente de la Ligue de Bretagne de triathlon",
+      "url": "https://www.instagram.com/p/C84xO--sJEw/",
+      "cadrage": "50% 40%",
+      "entiere": false
+    },
+    {
+      "image": "insta_C8pHWbyIzCi.jpg",
+      "alt": "Deux triathlètes du club, dossard au bras, devant une arche d'arrivée",
+      "url": "https://www.instagram.com/p/C8pHWbyIzCi/",
+      "cadrage": "50% 50%",
+      "entiere": false
+    },
+    {
+      "image": "insta_C8fVZ3GsCFL.jpg",
+      "alt": "Trois membres du club de nuit, devant un bateau à quai",
+      "url": "https://www.instagram.com/p/C8fVZ3GsCFL/",
+      "cadrage": "",
+      "entiere": false
+    },
+    {
+      "image": "insta_C8b402xsicp.jpg",
+      "alt": "Six triathlètes du club en trifonction, dossards au bras",
+      "url": "https://www.instagram.com/p/C8b402xsicp/",
+      "cadrage": "",
+      "entiere": false
+    },
+    {
+      "image": "insta_C8HHtKoMbdP.jpg",
+      "alt": "Deux membres du club en combinaison de swimrun, au bord d'un lac",
+      "url": "https://www.instagram.com/p/C8HHtKoMbdP/",
+      "cadrage": "",
+      "entiere": false
+    }
+  ],
+  "facebookIntegrations": [
+    "https://www.facebook.com/broceliandetri/posts/pfbid02o2chYpWqHv13q4qGvy8bwQ4wud5yr24sRuQ2wmpXbCeDF8zSAyvAMJ2G7n6QX1mol",
+    "https://www.facebook.com/broceliandetri/posts/pfbid0qX7c5zUkJkjDBLwTwrgRHcg11z8okq3hXpAsyM9C9L6KcjSRYv62Rs8mBqbYCEoLl",
+    "https://www.facebook.com/broceliandetri/posts/pfbid0M7MNtuQ5E2NV2PouGBnAWjkdCuHBnUmhJQduqaWuZjUT5enDi9oKcXoVJgonPpiLl"
+  ],
+  "instagramIntegrations": [
+    "https://www.instagram.com/p/C9AHOFbsE1z/",
+    "https://www.instagram.com/p/C84xO--sJEw/",
+    "https://www.instagram.com/p/C8pHWbyIzCi/"
+  ]
+}
